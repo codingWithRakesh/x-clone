@@ -1,14 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Happening Now - Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="login.css">
     <script type="module" src="login.js" defer></script>
 </head>
+
 <body>
-    <h1>Login</h1>
-    <p>Please enter your credentials to log in.</p>
+    <main class="flex flex-col lg:flex-row h-[90vh]">
+
+        <!-- Left section with X logo -->
+        <section class="logo-container lg:w-1/2 w-full">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-label="X logo in light gray" role="img"
+                class="w-48 h-48 sm:w-64 sm:h-64" fill="none" stroke="#e1e1e1" stroke-width="6" stroke-linejoin="round"
+                stroke-linecap="square">
+                <path d="M9 58 44 6M42 58 10 6l40 51h-8" />
+            </svg> -->
+            <img src="../assets/images/X_logo.jpg" alt="X logo">
+        </section>
+
+        <!-- Right section with sign up form -->
+        <section class="flex flex-col justify-center w-[50%] ml-[3rem] p-8 sm:p-12">
+            <h1 class="text-[4.5rem] font-extrabold mb-4 select-none">Happening now</h1>
+            <h2 class="text-[2rem] font-semibold mb-6 select-none">Join today.</h2>
+
+            <button type="button"
+                class="flex items-center justify-center gap-2 w-[20rem] mb-3 py-2 rounded-full border border-gray-700 bg-white text-gray-900 font-medium hover:bg-gray-200 focus-visible:outline-2 focus-visible:outline-blue-400"
+                aria-label="Sign up with Google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/250px-Google_Favicon_2025.svg.png" alt="Google logo in multi colors"
+                    onerror="this.onerror=null; this.src='https://placehold.co/20x20/gray/png?text=G';" class="w-5 h-5"
+                    loading="lazy" />
+                Sign up with Google
+            </button>
+
+            <button type="button"
+                class="flex items-center justify-center gap-2 w-[20rem] mb-4 py-2 rounded-full border border-gray-700 bg-white text-gray-900 font-medium hover:bg-gray-200 focus-visible:outline-2 focus-visible:outline-blue-400"
+                aria-label="Sign up with Apple">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/732px-Apple_logo_black.svg.png" alt="Apple logo in black silhouette"
+                    onerror="this.onerror=null; this.src='https://placehold.co/16x20/gray/png?text=A';" class="w-4 h-5"
+                    loading="lazy" />
+                Sign up with Apple
+            </button>
+
+            <div class="flex forWidthCreate items-center my-6" aria-hidden="true">
+                <hr class="flex-grow border-gray-700" />
+                <span class="mx-3 text-gray-500 select-none">OR</span>
+                <hr class="flex-grow border-gray-700" />
+            </div>
+
+            <button type="button"
+                style="width: 20rem;"
+                class="w-full forWidthCreate py-3 rounded-full bg-[#1d9bf0] text-white font-semibold hover:bg-[#1984d1] focus-visible:outline-2 focus-visible:outline-blue-400"
+                aria-label="Create account">
+                Create account
+            </button>
+
+            <p class="text-xs forWidthCreate text-gray-500 mt-3 px-1 leading-snug select-none" >
+                By signing up, you agree to the
+                <a href="#" tabindex="0">Terms of Service</a> and
+                <a href="#" tabindex="0">Privacy Policy</a>, including
+                <a href="#" tabindex="0">Cookie Use</a>.
+            </p>
+
+            <p class="mt-7 font-semibold select-none">
+                Already have an account?
+            </p>
+
+            <button type="button"
+                class="mt-2 py-2 px-6 rounded-full forWidthCreate border border-gray-700 text-[#1d9bf0] font-medium hover:bg-[#1d9bf0] hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-blue-400"
+                aria-label="Sign in">
+                Sign in
+            </button>
+        </section>
+    </main>
+
+    <footer class="select-none" aria-label="Footer navigation and copyright">
+        <nav aria-label="Footer links" role="navigation">
+            <a href="#" tabindex="0">About</a>
+            <a href="#" tabindex="0">Download the X app</a>
+            <a href="#" tabindex="0">Grok</a>
+            <a href="#" tabindex="0">Help Center</a>
+            <a href="#" tabindex="0">Terms of Service</a>
+            <a href="#" tabindex="0">Privacy Policy</a>
+            <a href="#" tabindex="0">Cookie Policy</a>
+            <a href="#" tabindex="0">Accessibility</a>
+            <a href="#" tabindex="0">Ads info</a>
+            <a href="#" tabindex="0">Blog</a>
+            <a href="#" tabindex="0">Careers</a>
+            <a href="#" tabindex="0">Brand Resources</a>
+            <a href="#" tabindex="0">Advertising</a>
+            <a href="#" tabindex="0">Marketing</a>
+            <a href="#" tabindex="0">X for Business</a>
+            <a href="#" tabindex="0">Developers</a>
+            <a href="#" tabindex="0">Directory</a>
+            <a href="#" tabindex="0">Settings</a>
+        </nav>
+        <div class="mt-2 text-center text-gray-600" aria-label="Copyright information">
+            © 2025 X Corp.
+        </div>
+    </footer>
 </body>
+
 </html>

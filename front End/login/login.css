@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+/* Reset & base */
+body,
+html {
+    margin: 0;
+    height: 100%;
+    background-color: #000;
+    color: #e1e1e1;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: #1d9bf0;
+    text-decoration: none;
+}
+
+a:hover,
+a:focus {
+    text-decoration: underline;
+    outline-offset: 2px;
+}
+
+/* Buttons */
+button {
+    outline-offset: 2px;
+    outline-color: transparent;
+    transition: background-color 0.3s ease, outline-color 0.2s ease;
+    cursor: pointer;
+}
+
+button:focus-visible {
+    outline-color: #1d9bf0;
+    outline-style: solid;
+}
+
+/* Logo container for better layout with fallback bg */
+.logo-container {
+    background-color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.logo-container img{
+    width: 30rem;
+    height: 30rem;
+    object-fit: contain;
+}
+
+/* Footer style */
+footer {
+    font-size: 0.75rem;
+    padding: 16px 24px;
+    color: #5a5a5a;
+    background-color: #000;
+    user-select: none;
+}
+
+footer nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+    justify-content: center;
+}
+
+footer nav a {
+    color: #5a5a5a;
+    border-right: 1px solid #3a3a3a;
+    padding-right: 8px;
+    user-select: none;
+}
+
+footer nav a:last-child {
+    border-right: none;
+}
+
+.forWidthCreate{
+    width: 20rem;
+}
