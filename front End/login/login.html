@@ -5,81 +5,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Happening Now - Sign Up</title>
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="login.css">
     <script type="module" src="login.js" defer></script>
 </head>
 
 <body>
-    <main class="flex flex-col lg:flex-row h-[90vh]">
+    <main class="main-container">
 
         <!-- Left section with X logo -->
-        <section class="logo-container lg:w-1/2 w-full">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-label="X logo in light gray" role="img"
-                class="w-48 h-48 sm:w-64 sm:h-64" fill="none" stroke="#e1e1e1" stroke-width="6" stroke-linejoin="round"
-                stroke-linecap="square">
-                <path d="M9 58 44 6M42 58 10 6l40 51h-8" />
-            </svg> -->
+        <section class="logo-container">
             <img src="../assets/images/X_logo.jpg" alt="X logo">
         </section>
 
         <!-- Right section with sign up form -->
-        <section class="flex flex-col justify-center w-[50%] ml-[3rem] p-8 sm:p-12">
-            <h1 class="text-[4.5rem] font-extrabold mb-4 select-none">Happening now</h1>
-            <h2 class="text-[2rem] font-semibold mb-6 select-none">Join today.</h2>
+        <section class="form-container">
+            <h1 class="main-heading">Happening now</h1>
+            <h2 class="sub-heading">Join today.</h2>
 
-            <button type="button"
-                class="flex items-center justify-center gap-2 w-[20rem] mb-3 py-2 rounded-full border border-gray-700 bg-white text-gray-900 font-medium hover:bg-gray-200 focus-visible:outline-2 focus-visible:outline-blue-400"
-                aria-label="Sign up with Google">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/250px-Google_Favicon_2025.svg.png" alt="Google logo in multi colors"
-                    onerror="this.onerror=null; this.src='https://placehold.co/20x20/gray/png?text=G';" class="w-5 h-5"
-                    loading="lazy" />
+            <button type="button" class="auth-button google-button" aria-label="Sign up with Google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/250px-Google_Favicon_2025.svg.png"
+                    alt="Google logo in multi colors"
+                    onerror="this.onerror=null; this.src='https://placehold.co/20x20/gray/png?text=G';"
+                    class="button-icon" loading="lazy" />
                 Sign up with Google
             </button>
 
-            <button type="button"
-                class="flex items-center justify-center gap-2 w-[20rem] mb-4 py-2 rounded-full border border-gray-700 bg-white text-gray-900 font-medium hover:bg-gray-200 focus-visible:outline-2 focus-visible:outline-blue-400"
-                aria-label="Sign up with Apple">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/732px-Apple_logo_black.svg.png" alt="Apple logo in black silhouette"
-                    onerror="this.onerror=null; this.src='https://placehold.co/16x20/gray/png?text=A';" class="w-4 h-5"
-                    loading="lazy" />
+            <button type="button" class="auth-button apple-button" aria-label="Sign up with Apple">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/732px-Apple_logo_black.svg.png"
+                    alt="Apple logo in black silhouette"
+                    onerror="this.onerror=null; this.src='https://placehold.co/16x20/gray/png?text=A';"
+                    class="button-icon" loading="lazy" />
                 Sign up with Apple
             </button>
 
-            <div class="flex forWidthCreate items-center my-6" aria-hidden="true">
-                <hr class="flex-grow border-gray-700" />
-                <span class="mx-3 text-gray-500 select-none">OR</span>
-                <hr class="flex-grow border-gray-700" />
+            <div class="divider" aria-hidden="true">
+                <hr class="divider-line" />
+                <span class="divider-text">OR</span>
+                <hr class="divider-line" />
             </div>
 
-            <button type="button"
-                style="width: 20rem;"
-                class="w-full forWidthCreate py-3 rounded-full bg-[#1d9bf0] text-white font-semibold hover:bg-[#1984d1] focus-visible:outline-2 focus-visible:outline-blue-400"
-                aria-label="Create account">
+            <button type="button" id="signUpButton" class="create-account-button" aria-label="Create account">
                 Create account
             </button>
 
-            <p class="text-xs forWidthCreate text-gray-500 mt-3 px-1 leading-snug select-none" >
+            <p class="terms-text">
                 By signing up, you agree to the
                 <a href="#" tabindex="0">Terms of Service</a> and
                 <a href="#" tabindex="0">Privacy Policy</a>, including
                 <a href="#" tabindex="0">Cookie Use</a>.
             </p>
 
-            <p class="mt-7 font-semibold select-none">
+            <p class="account-prompt">
                 Already have an account?
             </p>
 
-            <button type="button"
-                class="mt-2 py-2 px-6 rounded-full forWidthCreate border border-gray-700 text-[#1d9bf0] font-medium hover:bg-[#1d9bf0] hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-blue-400"
-                aria-label="Sign in">
+            <button type="button" id="signInButton" class="signin-button" aria-label="Sign in">
                 Sign in
             </button>
         </section>
     </main>
 
-    <footer class="select-none" aria-label="Footer navigation and copyright">
-        <nav aria-label="Footer links" role="navigation">
+    <footer class="footer" aria-label="Footer navigation and copyright">
+        <nav class="footer-nav" aria-label="Footer links" role="navigation">
             <a href="#" tabindex="0">About</a>
             <a href="#" tabindex="0">Download the X app</a>
             <a href="#" tabindex="0">Grok</a>
@@ -99,10 +86,122 @@
             <a href="#" tabindex="0">Directory</a>
             <a href="#" tabindex="0">Settings</a>
         </nav>
-        <div class="mt-2 text-center text-gray-600" aria-label="Copyright information">
+        <div class="copyright" aria-label="Copyright information">
             © 2025 X Corp.
         </div>
     </footer>
+
+
+    <!-- sign in component -->
+
+    <div id="signInModal" class="modal-overlay-two display-none">
+        <div class="modal-container-two">
+            <!-- Modal Header with Close button and Logo -->
+            <div class="modal-header-two">
+                <button id="closeSignInModal" class="close-button-two">&times;</button>
+                <svg viewBox="0 0 24 24" class="modal-logo">
+                    <g>
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+                <!-- Empty div to balance the flex layout -->
+                <div style="width: 24px;"></div>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="modal-content-two">
+                <div class="modal-body-two">
+                    <h2 class="modal-title-two">Sign in to X</h2>
+
+                    <!-- Social Login Buttons -->
+                    <button class="modal-button-two btn-social-two">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                            alt="Google" class="social-logo">
+                        <span>Sign in with Google</span>
+                    </button>
+                    <button class="modal-button-two btn-social-two">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple"
+                            class="social-logo">
+                        <span>Sign in with Apple</span>
+                    </button>
+
+                    <!-- "or" separator-two -->
+                    <div class="separator-two">or</div>
+
+                    <!-- Input for username -->
+                    <input type="text" class="input-field-two" id="username" name="username"
+                        placeholder="Phone, email, or username">
+
+                    <!-- Action Buttons -->
+                    <button class="modal-button-two btn-primary-two">Next</button>
+                    <button class="modal-button-two btn-secondary-two">Forgot password?</button>
+
+                    <!-- Footer Link -->
+                    <div class="modal-footer-two">
+                        <p>Don't have an account? <a href="#">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- sign up component -->
+    <div id="signUpModal" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <button id="closeSignUpModal" class="close-button">&times;</button>
+                <svg viewBox="0 0 24 24" class="modal-logo">
+                    <g>
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="modal-content-wrapper">
+                <div class="modal-body">
+                    <h2 class="modal-title">Create your account</h2>
+
+                    <div class="input-group">
+                        <input type="text" id="name-input" class="input-field" placeholder="Name" maxlength="50">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email-input" class="input-field" placeholder="Email">
+                    </div>
+
+                    <div class="dob-section">
+                        <h3>Date of birth</h3>
+                        <p>This will not be shown publicly. Confirm your own age, even if this account is for a
+                            business, a pet, or something else.</p>
+                        <div class="dob-selectors">
+                            <select id="month-select" class="select-field">
+                                <option value="" disabled selected>Month</option>
+                                <!-- Months would be populated here -->
+                            </select>
+                            <select id="day-select" class="select-field">
+                                <option value="" disabled selected>Day</option>
+                                <!-- Days would be populated here -->
+                            </select>
+                            <select id="year-select" class="select-field">
+                                <option value="" disabled selected>Year</option>
+                                <!-- Years would be populated here -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="next-button">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
