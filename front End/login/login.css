@@ -96,9 +96,9 @@ button:focus-visible {
     padding: 2rem;
 }
 
-@media (min-width: 640px) {
+@media (max-width: 640px) {
     .form-container {
-        padding: 3rem;
+        margin: 0;
     }
 }
 
@@ -701,6 +701,15 @@ button:focus-visible {
     }
 }
 
+
+@media (max-width: 640px) {
+    .main-heading{
+        font-size: 3.2rem;
+    }
+    .sub-heading{
+        font-size: 1.5;
+    }
+}
 
 
 
