@@ -1,10 +1,279 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     width: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #000;
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.mainContainer {
+    width: 74%;
+    height: 100vh;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebarContainer {
+    width: 26%;
+    height: 100vh;
+    position: relative;
+    border-right: 1px solid #2f3336;
+}
+
+
+
+/* Sidebar Container */
+.sidebar-container {
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px;
+    width: 88px;
+    transition: width 0.2s;
+    position: absolute;
+    top: 0;
+    right: 0;
+    /* Needed for pop-up positioning */
+}
+
+/* Top Section */
+.sidebar-top {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Logo */
+.sidebar-logo {
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.logo-svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+/* Navigation */
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+    border-radius: 9999px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 200ms;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    background-color: rgba(31, 41, 55, 0.7);
+}
+
+.nav-link.active {
+    font-weight: 700;
+}
+
+.nav-link.active svg {
+    stroke-width: 2.5;
+}
+
+.nav-icon {
+    width: 28px !important;
+    height: 28px !important;
+    flex-shrink: 0 !important;
+}
+
+.nav-text {
+    font-size: 18px;
+    display: none;
+    white-space: nowrap;
+}
+
+/* Post Button */
+.post-button {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: bold;
+    font-size: 16px;
+    width: 50px;
+    height: 50px;
+    padding: 12px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 200ms, width 0.2s;
+    margin-top: 16px;
+    align-self: center;
+}
+
+.post-button:hover {
+    background-color: #e1e1e1;
+}
+
+.post-button .post-text {
+    display: none;
+}
+
+.post-icon {
+    width: 24px;
+    height: 24px;
+    display: inline;
+    stroke: white;
+}
+
+/* User Profile */
+.user-profile {
+    padding: 12px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 200ms;
+}
+
+.user-profile:hover {
+    background-color: rgba(31, 41, 55, 0.7);
+}
+
+.user-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-details {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.user-info {
+    display: none;
+    white-space: nowrap;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.user-handle {
+    color: #9ca3af;
+    font-size: 12px;
+}
+
+.user-menu-dots {
+    display: none;
+}
+
+.menu-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* More Options Pop-up Menu */
+#more-menu-popup {
+    display: none;
+    /* Hidden by default */
+    position: absolute;
+    bottom: 85px;
+    /* Position above the user profile */
+    left: 10px;
+    background-color: #000;
+    border-radius: 16px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    width: 300px;
+    z-index: 1000;
+    padding: 12px 0;
+}
+
+#more-menu-popup.visible {
+    display: block;
+    /* Show the menu */
+}
+
+.popup-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.popup-link:hover {
+    background-color: rgba(31, 41, 55, 0.7);
+}
+
+.popup-icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* Responsive Design for Desktop */
+@media (min-width: 768px) {
+    .sidebar-container {
+        width: 275px;
+        padding: 12px;
+    }
+
+    .nav-text {
+        display: inline;
+    }
+
+    .post-button {
+        width: 100%;
+        height: auto;
+        align-self: initial;
+    }
+
+    .post-button .post-text {
+        display: inline;
+    }
+
+    .post-button .post-icon {
+        display: none;
+    }
+
+    .user-info,
+    .user-menu-dots {
+        display: block;
+    }
 }
