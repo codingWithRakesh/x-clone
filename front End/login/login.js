@@ -92,3 +92,12 @@ window.addEventListener('click', function (event) {
         }
     }
 });
+
+
+const switchButton = document.getElementById('switchButton');
+
+switchButton.addEventListener('click', function () {
+    signInModal.classList.toggle('display-none');
+    signUpModal.classList.toggle('display-none');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+});
