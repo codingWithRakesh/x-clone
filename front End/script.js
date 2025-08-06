@@ -1,28 +1,69 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = navMenu.querySelectorAll('.nav-link');
-    const moreButton = document.getElementById('more-button');
-    const moreMenuPopup = document.getElementById('more-menu-popup');
 
-    // --- Active Link Handler ---
-    // navLinks.forEach(link => {
-    //     link.addEventListener('click', function (event) {
-    //         event.preventDefault();
-    //         navLinks.forEach(l => l.classList.remove('active'));
-    //         this.classList.add('active');
-    //     });
-    // });
+const navMenu = document.getElementById('nav-menu');
+const navLinks = navMenu.querySelectorAll('.nav-link');
+const moreButton = document.getElementById('more-button');
+const moreMenuPopup = document.getElementById('more-menu-popup');
 
-    // --- Pop-up Menu Handler ---
-    moreButton.addEventListener('click', function (event) {
-        event.stopPropagation(); // Prevents the window click event from firing immediately
-        moreMenuPopup.classList.toggle('visible');
-    });
+// --- Active Link Handler ---
+// navLinks.forEach(link => {
+//     link.addEventListener('click', function (event) {
+//         event.preventDefault();
+//         navLinks.forEach(l => l.classList.remove('active'));
+//         this.classList.add('active');
+//     });
+// });
 
-    // --- Close Pop-up when Clicking Outside ---
-    window.addEventListener('click', function (event) {
-        if (!moreMenuPopup.contains(event.target) && !moreButton.contains(event.target)) {
-            moreMenuPopup.classList.remove('visible');
-        }
-    });
+// --- Pop-up Menu Handler ---
+moreButton.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevents the window click event from firing immediately
+    moreMenuPopup.classList.toggle('visible');
+});
+
+// --- Close Pop-up when Clicking Outside ---
+window.addEventListener('click', function (event) {
+    if (!moreMenuPopup.contains(event.target) && !moreButton.contains(event.target)) {
+        moreMenuPopup.classList.remove('visible');
+    }
+});
+
+
+
+const postInput = document.getElementById('post-input');
+const postButton = document.getElementById('post-button-post');
+const postModal = document.getElementById('postModal');
+const postButtonElement = document.getElementById('postButton');
+const closePostButton = document.getElementById('closePostButton');
+
+closePostButton.addEventListener('click', function () {
+    postModal.classList.toggle('display-none');
+    document.body.style.overflow = ''; // Restore scrolling
+});
+
+// Enable/disable post button based on textarea content
+postInput.addEventListener('input', function () {
+    if (postInput.value.trim().length > 0) {
+        postButton.disabled = false;
+    } else {
+        postButton.disabled = true;
+    }
+});
+
+postButtonElement.addEventListener('click', function () {
+    postModal.classList.toggle('display-none');
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+});
+
+window.addEventListener('click', function (event) {
+    if (event.target === postModal) {
+        postModal.classList.add('display-none');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+    if (event.target === closePostButton) {
+        postModal.classList.add('display-none');
+        document.body.style.overflow = ''; // Restore scrolling
+    }   
+    if (event.target.classList.contains('modal-overlay-post')) {
+        postModal.classList.add('display-none');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
 });
