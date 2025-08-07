@@ -247,37 +247,6 @@ body {
     fill: currentColor;
 }
 
-/* Responsive Design for Desktop */
-@media (min-width: 768px) {
-    .sidebar-container {
-        width: 275px;
-        padding: 12px;
-    }
-
-    .nav-text {
-        display: inline;
-    }
-
-    .post-button {
-        width: 100%;
-        height: auto;
-        align-self: initial;
-    }
-
-    .post-button .post-text {
-        display: inline;
-    }
-
-    .post-button .post-icon {
-        display: none;
-    }
-
-    .user-info,
-    .user-menu-dots {
-        display: block;
-    }
-}
-
 
 
 /* take post css */
@@ -462,22 +431,6 @@ body {
     /* Darker, disabled blue */
     color: rgb(0, 0, 0);
     cursor: not-allowed;
-}
-
-/* --- Responsive --- */
-@media (max-width: 600px) {
-    .modal-overlay-post {
-        padding-top: 0;
-        align-items: stretch;
-    }
-
-    .modal-container-post {
-        width: 100%;
-        height: 100%;
-        max-width: 100vw;
-        max-height: 100vh;
-        border-radius: 0;
-    }
 }
 
 
