@@ -30,6 +30,18 @@ body {
     justify-content: center;
 }
 
+.mainCOl{
+    width: 53%;
+    height: 100vh;
+    border: 1px solid #fff;
+}
+
+.rightCol{
+    width: 47%;
+    height: 100vh;
+    border: 1px solid #fff;
+}
+
 .sidebarContainer {
     width: 26%;
     height: 100vh;
