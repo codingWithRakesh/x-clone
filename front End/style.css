@@ -445,6 +445,167 @@ body {
     cursor: not-allowed;
 }
 
+/* --- Right Sidebar Styles --- */
+.right-sidebar {
+    width: 25rem;
+    max-width: 100%;
+    padding: 0 35px;
+    /* Add padding for smaller screens */
+}
+
+.search-bar-container {
+    position: sticky;
+    top: 0;
+    background-color: #000;
+    padding: 12px 0;
+    z-index: 10;
+}
+
+.search-bar {
+    background-color: transparent;
+    border: 1px solid #2f3336;
+    border-radius: 9999px;
+    padding: 12px 16px 12px 40px;
+    width: 22rem;
+    color: #e7e9ea;
+    font-size: 15px;
+}
+
+.search-bar:focus {
+    outline: none;
+    border-color: #e7e9ea;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    fill: #71767b;
+}
+
+.right-sidebar-card {
+    /* background-color: var(--card-background);  */
+    border: 1px solid #2f3336;
+    border-radius: 16px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    width: 22rem;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.subscribe-text {
+    font-size: 15px;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.subscribe-button {
+    background-color: #1d9bf0;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    cursor: pointer;
+}
+
+.trending-item,
+.follow-item {
+    padding: 12px 0;
+}
+
+.item-category,
+.item-timestamp {
+    color: #71767b;
+    font-size: 13px;
+}
+
+.item-title {
+    font-weight: 700;
+    margin: 3px 0;
+}
+
+.item-posts {
+    color: #71767b;
+    font-size: 13px;
+}
+
+.show-more-link {
+    color: #1d9bf0;
+    text-decoration: none;
+    padding: 12px 0;
+    display: block;
+}
+
+.follow-item {
+    display: flex;
+    align-items: center;
+}
+
+.follow-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.post-user-name {
+    font-weight: 700;
+}
+
+.post-user-handle {
+    color: #71767b;
+}
+
+.follow-button {
+    background-color: #e7e9ea;
+    color: #000;
+    font-weight: 700;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.right-sidebar-footer {
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #71767b;
+    line-height: 1.5;
+}
+
+.right-sidebar-footer a {
+    color: #71767b;
+    text-decoration: none;
+    margin-right: 6px;
+    font-size: 11px;
+    position: relative;
+    /* NEW: Sets the positioning context for the pseudo-element */
+}
+
+.footer-links-top a::after {
+    /* NEW: Selects links in the top row to add a separator */
+    content: '|';
+    /* NEW: Adds the vertical bar character after the link */
+    position: absolute;
+    /* NEW: Allows precise positioning of the bar */
+    right: -12px;
+    /* NEW: Positions the bar to the right of the link */
+}
+
+.footer-copyright {
+    margin-right: 12px;
+}
+
 
 
 
