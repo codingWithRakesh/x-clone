@@ -28,76 +28,111 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-
-
 const signUpButton = document.getElementById('signUpButton');
 const signInButton = document.getElementById('signInButton');
 const signUpModal = document.getElementById('signUpModal');
 const signInModal = document.getElementById('signInModal');
-const closeSignUpModal = document.getElementById('closeSignUpModal');
-const closeSignInModal = document.getElementById('closeSignInModal');
+const signUpModalInput = document.getElementById('signUpModalInput');
+const nextPageOtp = document.getElementById('nextPageOtp');
+const backArrowOtp = document.getElementById('backArrowOtp');
+const otpSection = document.getElementById('otpSection');
+const signUPPassword = document.getElementById('signUPPassword');
+const signUPInput = document.getElementById('signUPInput');
+const nextToPassword = document.getElementById('nextToPassword');
 
+// Toggle modals
 signUpButton.addEventListener('click', function () {
-    signUpModal.classList.toggle('display-none');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    signUpModal.classList.remove('display-none');
+    signInModal.classList.add('display-none');
+    document.body.style.overflow = 'hidden';
 });
 
 signInButton.addEventListener('click', function () {
-    signInModal.classList.toggle('display-none');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
+    signInModal.classList.remove('display-none');
+    signUpModal.classList.add('display-none');
+    document.body.style.overflow = 'hidden';
 });
 
-closeSignUpModal.addEventListener('click', function () {
-    signUpModal.classList.toggle('display-none');
-    document.body.style.overflow = ''; // Restore scrolling
-});
+// Close modals
+window.closeSignUpModal = function () {
+    signUpModal.classList.add('display-none');
+    document.body.style.overflow = '';
+};
 
-closeSignInModal.addEventListener('click', function () {
-    signInModal.classList.toggle('display-none');
-    document.body.style.overflow = ''; // Restore scrolling
-}); 
+window.closeSignInModal = function () {
+    signInModal.classList.add('display-none');
+    document.body.style.overflow = '';
+    // Reset sign-in modal to first step
+    signUPInput.classList.remove('display-none');
+    signUPPassword.classList.add('display-none');
+};
 
+// Switch between sign-in and sign-up
+window.switchButton = function () {
+    // First close both modals to reset any steps
+    signInModal.classList.add('display-none');
+    signUpModal.classList.add('display-none');
+    
+    // Then open the opposite of what's currently visible
+    if (signInModal.classList.contains('display-none')) {
+        signUpModal.classList.remove('display-none');
+    } else {
+        signInModal.classList.remove('display-none');
+    }
+    
+    // Reset the sign-in modal to first step
+    signUPInput.classList.remove('display-none');
+    signUPPassword.classList.add('display-none');
+    
+    // Reset the sign-up modal to first step
+    signUpModalInput.classList.remove('display-none');
+    otpSection.classList.add('display-none');
+    
+    document.body.style.overflow = 'hidden';
+};
+
+// Handle clicks outside modals
 window.addEventListener('click', function (event) {
     if (event.target === signUpModal) {
-        signUpModal.classList.add('display-none');
-        document.body.style.overflow = ''; // Restore scrolling
+        closeSignUpModal();
     }
     if (event.target === signInModal) {
-        signInModal.classList.add('display-none');
-        document.body.style.overflow = ''; // Restore scrolling
-    } 
-
-    if (event.target.classList.contains('modal-overlay-two')) {
-        signInModal.classList.add('display-none');
-        document.body.style.overflow = ''; // Restore scrolling
-    }
-
-    if (event.target.classList.contains('modal-overlay')) {
-        signUpModal.classList.add('display-none');
-        document.body.style.overflow = ''; // Restore scrolling
-    }
-
-    if (event.target.classList.contains('modal-overlay-two') || event.target.classList.contains('modal-overlay')) {
-        event.target.classList.add('display-none');
-        document.body.style.overflow = ''; // Restore scrolling
-    }
-
-    if (event.target.classList.contains('close-button-two') || event.target.classList.contains('close-button')) {
-        if (event.target.closest('.modal-overlay-two')) {
-            signInModal.classList.add('display-none');
-            document.body.style.overflow = ''; // Restore scrolling
-        } else if (event.target.closest('.modal-overlay')) {
-            signUpModal.classList.add('display-none');
-            document.body.style.overflow = ''; // Restore scrolling
-        }
+        closeSignInModal();
     }
 });
 
+// Navigation between modal steps
+backArrowOtp.addEventListener('click', function () {
+    otpSection.classList.add('display-none');
+    signUpModalInput.classList.remove('display-none');
+});
 
-const switchButton = document.getElementById('switchButton');
+nextPageOtp.addEventListener('click', function () {
+    otpSection.classList.remove('display-none');
+    signUpModalInput.classList.add('display-none');
+});
 
-switchButton.addEventListener('click', function () {
-    signInModal.classList.toggle('display-none');
-    signUpModal.classList.toggle('display-none');
-    document.body.style.overflow = 'hidden'; // Prevent scrolling
+nextToPassword.addEventListener('click', function () {
+    signUPInput.classList.add('display-none');
+    signUPPassword.classList.remove('display-none');
+});
+
+// Password field toggle
+const passwordField = document.getElementById('passwordField');
+const togglePassword = document.getElementById('togglePassword');
+
+togglePassword.addEventListener('click', function () {
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+});
+
+// Login button functionality
+const loginBtn = document.getElementById('loginBtn');
+loginBtn.addEventListener('click', () => {
+    const password = passwordField.value;
+    if (password) {
+        console.log(`Logging in with password: ${password}`);
+    } else {
+        console.log('Please enter a password.');
+    }
 });

@@ -520,7 +520,7 @@ button:focus-visible {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    padding: 0 32px;
+    padding: 0 3rem;
     /* Adjusted horizontal padding */
 }
 
@@ -648,6 +648,7 @@ button:focus-visible {
 .modal-footer {
     padding: 24px 0;
     margin-top: auto;
+    padding-top: 6rem;
     /* Pushes footer to the bottom */
 }
 
@@ -703,13 +704,332 @@ button:focus-visible {
 
 
 @media (max-width: 640px) {
-    .main-heading{
+    .main-heading {
         font-size: 3.2rem;
     }
-    .sub-heading{
+
+    .sub-heading {
         font-size: 1.5;
     }
 }
+
+
+/* otp page styles */
+
+/* --- Modal Container --- */
+.modal-container-otp {
+    background-color: #000000;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    /* Max width for the modal */
+    min-height: 650px;
+    /* Min height to match the image proportion */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Ensures padding is included in the width/height */
+}
+
+/* --- Header Elements (Back Arrow & Logo) --- */
+.modal-header-otp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* margin-bottom: 20px; */
+    height: 50px;
+}
+
+.back-arrow-otp {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    color: #e7e9ea;
+}
+
+.logo-x {
+    width: 30px;
+    height: 30px;
+}
+
+/* --- Main Content --- */
+.modal-content-otp {
+    padding: 0 40px;
+    flex-grow: 1;
+    /* Allows this section to grow and push the footer down */
+}
+
+h2 {
+    font-size: 31px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.modal-content-otp p {
+    font-size: 15px;
+    color: #71767b;
+    margin-bottom: 24px;
+}
+
+/* --- Input Field --- */
+.input-group-otp {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.input-field-otp {
+    width: 100%;
+    height: 4rem;
+    background-color: transparent;
+    border: 1px solid #333639;
+    border-radius: 4px;
+    padding: 16px 8px 0px;
+    font-size: 17px;
+    color: #e7e9ea;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.input-label-otp {
+    position: absolute;
+    left: 8px;
+    top: 18px;
+    color: #71767b;
+    font-size: 17px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* Input focus and filled styles */
+.input-field-otp:focus {
+    outline: none;
+    border-color: #1d9bf0;
+}
+
+.input-field-otp:focus+.input-label-otp,
+.input-field-otp:not(:placeholder-shown)+.input-label-otp {
+    top: 5px;
+    font-size: 13px;
+    color: #1d9bf0;
+}
+
+.forgot-link-otp {
+    color: #1d9bf0;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.forgot-link-otp:hover {
+    text-decoration: underline;
+}
+
+/* --- Footer Button --- */
+.modal-footer-otp {
+    padding: 0 40px 20px;
+}
+
+.next-button-otp {
+    width: 100%;
+    background-color: #eff3f4;
+    color: #0f1419;
+    border: none;
+    border-radius: 9999px;
+    /* Pill shape */
+    padding: 14px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.next-button-otp:hover {
+    background-color: #d7dbdc;
+}
+
+/* password container  */
+
+/* --- Modal Container --- */
+.modal-container-pass {
+    background-color: #000000;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    min-height: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* --- Header Elements (Close Button & Logo) --- */
+.modal-header-pass {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.close-button-pass {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    font-weight: 300;
+    cursor: pointer;
+    color: #e7e9ea;
+    padding: 5px;
+    line-height: 1;
+}
+
+.logo-x {
+    width: 30px;
+    height: 30px;
+}
+
+/* --- Main Content --- */
+.modal-content-pass {
+    padding: 0 30px;
+    flex-grow: 1;
+}
+
+h2 {
+    font-size: 31px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+/* --- Input Fields --- */
+.input-group-pass {
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.input-field-pass,
+.static-field-pass {
+    width: 100%;
+    height: 4rem;
+    background-color: transparent;
+    border: 1px solid #333639;
+    border-radius: 4px;
+    padding: 1.5rem 8px 0;
+    font-size: 17px;
+    color: #e7e9ea;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.static-field-pass {
+    color: #71767b;
+    /* Greyed out text for the email */
+}
+
+.input-label-pass {
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    /* Positioned for static fields */
+    color: #71767b;
+    font-size: 13px;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* Floating label for active password input */
+.password-wrapper-pass .input-label-pass {
+    top: 16px;
+    font-size: 17px;
+}
+
+.input-field-pass:focus {
+    outline: none;
+    border-color: #1d9bf0;
+}
+
+.input-field-pass:focus+.input-label-pass,
+.input-field-pass:not(:placeholder-shown)+.input-label-pass {
+    top: 6px;
+    font-size: 13px;
+    color: #1d9bf0;
+}
+
+.password-wrapper-pass {
+    position: relative;
+}
+
+.toggle-password-pass {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+.forgot-link-pass {
+    color: #1d9bf0;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.forgot-link-pass:hover {
+    text-decoration: underline;
+}
+
+/* --- Footer --- */
+.modal-footer-pass {
+    padding: 0 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Space between button and sign up link */
+}
+
+.login-button-pass {
+    width: 100%;
+    background-color: #eff3f4;
+    color: #0f1419;
+    border: 1px solid #eff3f4;
+    border-radius: 9999px;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.login-button-pass:hover {
+    background-color: #d7dbdc;
+}
+
+.signup-prompt-pass {
+    text-align: left;
+    font-size: 15px;
+    color: #71767b;
+}
+
+.signup-prompt-pass a {
+    color: #1d9bf0;
+    text-decoration: none;
+}
+
+.signup-prompt-pass a:hover {
+    text-decoration: underline;
+}
+
 
 
 

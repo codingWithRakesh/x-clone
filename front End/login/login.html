@@ -95,10 +95,10 @@
     <!-- sign in component -->
 
     <div id="signInModal" class="modal-overlay-two display-none">
-        <div class="modal-container-two">
-            <!-- Modal Header with Close button and Logo -->
+        <!-- for input fields take email -->
+        <div class="modal-container-two " id="signUPInput" >
             <div class="modal-header-two">
-                <button id="closeSignInModal" class="close-button-two">&times;</button>
+                <button onclick="closeSignInModal()" class="close-button-two">&times;</button>
                 <svg viewBox="0 0 24 24" class="modal-logo">
                     <g>
                         <path
@@ -135,14 +135,62 @@
                         placeholder="Phone, email, or username">
 
                     <!-- Action Buttons -->
-                    <button class="modal-button-two btn-primary-two">Next</button>
+                    <button id="nextToPassword" class="modal-button-two btn-primary-two">Next</button>
                     <button class="modal-button-two btn-secondary-two">Forgot password?</button>
 
                     <!-- Footer Link -->
                     <div class="modal-footer-two">
-                        <p>Don't have an account? <a href="#" id="switchButton">Sign up</a></p>
+                        <p>Don't have an account? <a href="#" onclick="switchButton()">Sign up</a></p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- take password field -->
+        <div id="signUPPassword" class="modal-container-pass display-none">
+            <!-- Header with Close Button and Logo -->
+            <div class="modal-header-pass">
+                <div onclick="closeSignInModal()" class="close-button-pass" id="closeBtn">&times;</div>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="logo-x">
+                    <g>
+                        <path fill="#e7e9ea"
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="modal-content-pass">
+                <h2>Enter your password</h2>
+
+                <div class="input-group-pass">
+                    <div class="static-field-pass">tarapadagarai898@gmail.com</div>
+                    <label class="input-label-pass">Email</label>
+                </div>
+
+                <div class="input-group-pass password-wrapper-pass">
+                    <input type="password" id="passwordField" class="input-field-pass" placeholder=" " required>
+                    <label for="passwordField" class="input-label-pass">Password</label>
+                    <svg viewBox="0 0 24 24" class="toggle-password-pass" id="togglePassword">
+                        <g fill="#71767b">
+                            <path
+                                d="M12 14.5c1.38 0 2.5-1.12 2.5-2.5S13.38 9.5 12 9.5s-2.5 1.12-2.5 2.5 1.12 2.5 2.5 2.5z">
+                            </path>
+                            <path
+                                d="M21.87 11.5c-.64-1.11-1.47-2.13-2.45-3.03-1.95-1.82-4.37-2.97-7.17-2.97s-5.22 1.15-7.17 2.97c-.98.9-1.81 1.92-2.45 3.03-.21.37-.35.76-.43 1.16-.02.09-.04.19-.04.29s0 .2.04.29c.08.4.22.79.43 1.16.64 1.11 1.47 2.13 2.45 3.03 1.95 1.82 4.37 2.97 7.17 2.97s5.22-1.15 7.17-2.97c.98-.9 1.81-1.92 2.45-3.03.21-.37.35-.76.43-1.16.02-.09.04-.19.04-.29s0-.2-.04-.29c-.08-.4-.22-.79-.43-1.16zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+
+                <a href="#" class="forgot-link-pass">Forgot password?</a>
+            </div>
+
+            <!-- Footer with Login Button and Sign Up Link -->
+            <div class="modal-footer-pass">
+                <button class="login-button-pass" id="loginBtn">Log in</button>
+                <p class="signup-prompt-pass">Don't have an account? <a href="#" onclick="switchButton()">Sign up</a></p>
             </div>
         </div>
     </div>
@@ -151,9 +199,10 @@
 
     <!-- sign up component -->
     <div id="signUpModal" class="modal-overlay display-none">
-        <div class="modal-container">
+        <!-- for input fields -->
+        <div id="signUpModalInput" class="modal-container ">
             <div class="modal-header">
-                <button id="closeSignUpModal" class="close-button">&times;</button>
+                <button onclick="closeSignUpModal()" class="close-button">&times;</button>
                 <svg viewBox="0 0 24 24" class="modal-logo">
                     <g>
                         <path
@@ -196,11 +245,45 @@
                     </div>
                 </div>
 
-                <div class="modal-footer">
+                <div class="modal-footer" id="nextPageOtp">
                     <button class="next-button">Next</button>
                 </div>
             </div>
         </div>
+
+        <!-- otp section -->
+        <div id="otpSection" class="modal-container-otp display-none">
+            <!-- Header with Back Arrow and Logo -->
+            <div class="modal-header-otp">
+                <div id="backArrowOtp" class="back-arrow-otp">&#x2190;</div>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="logo-x">
+                    <g>
+                        <path fill="#e7e9ea"
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="modal-content-otp">
+                <h2>We sent you a code</h2>
+                <p>Enter it below to verify </p>
+
+                <div class="input-group-otp">
+                    <input type="text" id="verificationCode" class="input-field-otp" placeholder=" " required>
+                    <label for="verificationCode" class="input-label-otp">Verification code</label>
+                </div>
+
+                <a href="#" class="forgot-link-otp">Didn't receive email?</a>
+            </div>
+
+            <!-- Footer with Next Button -->
+            <div class="modal-footer-otp">
+                <button class="next-button-otp" id="nextBtn">Next</button>
+            </div>
+        </div>
+
     </div>
 </body>
 
