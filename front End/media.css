@@ -1,10 +1,11 @@
 /* Sidebar Container */
 /* Responsive Design for Desktop */
-@media (min-width: 768px) {
+@media (min-width: 1270px) {
     .sidebar-container {
         width: 275px;
         padding: 12px;
     }
+    
 
     .nav-text {
         display: inline;
@@ -30,21 +31,66 @@
     }
 }
 
-
-
-/* take post css */
-/* --- Responsive --- */
-@media (max-width: 600px) {
-    .modal-overlay-post {
-        padding-top: 0;
-        align-items: stretch;
+@media (max-width: 1270px) {
+    .sidebarContainer{
+        width: 15%;
+    }
+    .sidebar-container{
+        width: 7rem;
     }
 
-    .modal-container-post {
-        width: 100%;
-        height: 100%;
-        max-width: 100vw;
-        max-height: 100vh;
-        border-radius: 0;
+    .user-details .user-info{
+        display: none;
+    }
+
+    .mainContainer {
+        width: 85%;
+    }
+
+    .right-sidebar-card, .search-bar {
+        width: 18rem;
+    }
+
+    .mainCOl {
+        width: 63%;
+    }
+
+    .feed{
+        max-width: 100%;
+    }
+}
+
+
+@media (max-width: 1000px) {
+    .rightCol{
+        display: none;
+    }
+
+    .mainCOl {
+        width: 90%;
+    }
+}
+
+@media (max-width: 800px) {
+    .mainContainer{
+        width: 85%;
+    }
+    .sidebarContainer{
+        width: 14%;
+    }
+    .mainCOl{
+        width: 98%;
+    }
+    .nav-link{
+        justify-content: center;
+    }
+    .sidebar-container{
+        width: 6rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .sidebar-container {
+        width: 4rem;
     }
 }
