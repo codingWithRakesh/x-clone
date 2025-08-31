@@ -158,15 +158,15 @@ button:focus-visible {
     padding: .8rem;
     font-size: .8rem;
     border-radius: 9999px;
-    background-color: #1d9bf0;
-    color: white;
+    background-color: #fff;
+    color: #111827;
     font-weight: 600;
     outline: none;
     border: none;
 }
 
 .create-account-button:hover {
-    background-color: #1984d1;
+    background-color: #e5e7eb;
 }
 
 .signin-button {
