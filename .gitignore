@@ -1,2 +1,8 @@
 .vscode/
 mywork
+
+back End/.env
+back End/node_modules
+
+front End/.env
+front End/node_modules

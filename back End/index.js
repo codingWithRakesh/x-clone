@@ -1,12 +1,18 @@
-import express from 'express'
-import {connectserver} from "./db.js"
-import 'dotenv/config'
-const app = express()
-connectserver()
-app.use(express.json())
-app.get("/",(req,res)=>{
-    res.json({"App":"Your X-app server is run."})
-})
-app.listen(process.env.PORT,()=>{
-   console.log(`Server Started on http://localhost:${process.env.PORT}`)
+import dotenv from "dotenv"
+import connectDB from './src/db/db.js'
+// import { server } from "./src/socket/socket.js"
+import { app } from "./src/app.js"
+dotenv.config({path : ".env"})
+
+const PORT = process.env.PORT || 8000
+
+connectDB().then(() => {
+    app.on("error", (err)=>{
+        console.log(err)
+    })
+    app.listen(PORT,()=>{
+        console.log("server running",PORT)
+    })
+}).catch((err) => {
+    console.log("connection failed", err?.message)
 })
