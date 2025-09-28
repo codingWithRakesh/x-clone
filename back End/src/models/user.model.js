@@ -1,13 +1,14 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcrypt';
 
 const { Schema, model, Types } = mongoose;
 
 const UserSchema = new Schema({
-    username: { type: String, required: true, unique: true, trim: true, lowercase: true, index: true },
-    displayName: { type: String, required: true, trim: true },
+    username: { type: String, unique: true, trim: true, lowercase: true, index: true },
+    fullName : { type: String, required: true, trim: true },
     email: { type: String, required: true, unique: true, lowercase: true, trim: true, index: true },
-    password: { type: String, required: true, select: false },
+    password: { type: String, select: false },
+    refreshToken : { type: String, select: false },
     bio: { type: String, default: '' },
     location: { type: String },
     website: { type: String },
@@ -18,9 +19,22 @@ const UserSchema = new Schema({
     followersCount: { type: Number, default: 0 },
     followingCount: { type: Number, default: 0 },
     tweetsCount: { type: Number, default: 0 },
+    dateOfBirth : { 
+        date : { type: Number, min: 1, max: 31 },
+        month : { type: String, enum: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ] },
+        year : { type: Number, min: 1900, max: new Date().getFullYear() }
+    },
+    OTP : {
+        code : { type: String },
+        expiresAt : { type: Date },
+        otpRequests : { type: Number, default: 0 },
+        lastOtpRequestAt: { type: Date },
+        otpBlockedUntil: { type: Date },
+    },
     // for account security
     isLocked: { type: Boolean, default: false },
     loginAttempts: { type: Number, default: 0 },
+    lockUntil: { type: Date },
     lastLoginAt: { type: Date },
     // optional: OAuth provider data
     oauth: {
@@ -29,22 +43,5 @@ const UserSchema = new Schema({
     }
 }, { timestamps: true });
 
-
-// password hash
-UserSchema.pre('save', async function (next) {
-    if (!this.isModified('password')) return next();
-    try {
-        const salt = await bcrypt.genSalt(12);
-        this.password = await bcrypt.hash(this.password, salt);
-        return next();
-    } catch (err) {
-        return next(err);
-    }
-});
-
-
-UserSchema.methods.comparePassword = async function (candidate) {
-    return bcrypt.compare(candidate, this.password);
-};
 
 export const User = model('User', UserSchema);
