@@ -702,6 +702,10 @@ button:focus-visible {
     .input-field {
         width: 100%;
     }
+
+    .modal-content-pass{
+        padding: 0 !important;
+    }
 }
 
 
