@@ -10,18 +10,18 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (response.ok) {
             const data = await response.json();
             // console.log('User data retrieved successfully:', data);
-            window.location.href = "/front End/index.html";
+            window.location.href = "/index.html";
         } else {
             const errorData = await response.json();
             console.error('Error retrieving user data:', errorData);
             if (!window.location.href.includes('login.html')) {
-                window.location.href = "/front End/login/login.html";
+                window.location.href = "/login/login.html";
             }
         }
     } catch (error) {
         console.error('Network error:', error);
         if (!window.location.href.includes('login.html')) {
-            window.location.href = "/front End/login/login.html";
+            window.location.href = "/login/login.html";
         }
     }
 
@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         } else {
             alert('Sign-up completed successfully!');
             closeSignUpModal();
-            window.location.href = "/front End/index.html";
+            window.location.href = "/index.html";
         }
     });
 });
@@ -585,7 +585,7 @@ loginBtn.addEventListener('click', async () => {
                 const data = await response.json();
                 // console.log('Login successful:', data);
                 alert('Login successful!');
-                window.location.href = "/front End/index.html";
+                window.location.href = "/index.html";
             } else {
                 const errorData = await response.json();
                 alert(`Error: ${errorData.message}`);
