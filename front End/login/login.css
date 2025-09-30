@@ -326,6 +326,8 @@ button:focus-visible {
 /* --- Modal Body --- */
 .modal-body-two {
     padding: 20px 60px;
+    display: flex;
+    flex-direction: column;
     /* display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -433,7 +435,7 @@ button:focus-visible {
     border-radius: 4px;
     color: #e7e9ea;
     font-size: 17px;
-    margin-left: 2.6rem;
+    /* margin-left: 2.6rem; */
 }
 
 .input-field-two:focus {
@@ -698,7 +700,7 @@ button:focus-visible {
     }
 
     .input-field {
-        width: 90%;
+        width: 100%;
     }
 }
 
