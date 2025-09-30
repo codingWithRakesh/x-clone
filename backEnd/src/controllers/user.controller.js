@@ -52,6 +52,15 @@ const registerUser = asyncHandler(async (req, res, next) => {
         throw new ApiError(500, "Failed to create user. Please try again.")
     }
 
+    const usernames = await generateUserName(user.fullName, user.email)
+    if(!usernames || usernames.length === 0){
+        throw new ApiError(500, "Failed to generate default username. Please try again.")
+    }
+
+    const defaultUsername = usernames[0];
+    user.username = defaultUsername;
+    await user.save({ validateBeforeSave: false });
+
     const emailSend = await sendVerificationEmail(user.email, otp)
     if (!emailSend) {
         throw new ApiError(500, "Failed to send verification email. Please try again.")
