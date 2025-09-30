@@ -96,7 +96,7 @@
 
     <div id="signInModal" class="modal-overlay-two display-none">
         <!-- for input fields take email -->
-        <div class="modal-container-two " id="signUPInput" >
+        <div class="modal-container-two " id="signUPInput">
             <div class="modal-header-two">
                 <button onclick="closeSignInModal()" class="close-button-two">&times;</button>
                 <svg viewBox="0 0 24 24" class="modal-logo">
@@ -172,7 +172,14 @@
                 <div class="input-group-pass password-wrapper-pass">
                     <input type="password" id="passwordField" class="input-field-pass" placeholder=" " required>
                     <label for="passwordField" class="input-label-pass">Password</label>
-                    <svg viewBox="0 0 24 24" aria-hidden="true" class="toggle-password-pass" id="togglePassword" fill="#71767b" style="color: rgb(239, 243, 244);"><g><path d="M12 21c-7.605 0-10.804-8.296-10.937-8.648L.932 12l.131-.352C1.196 11.295 4.394 3 12 3s10.804 8.296 10.937 8.648l.131.352-.131.352C22.804 12.705 19.606 21 12 21zm-8.915-9c.658 1.467 3.5 7 8.915 7s8.257-5.533 8.915-7c-.658-1.467-3.5-7-8.915-7s-8.257 5.533-8.915 7zM12 16c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z"></path></g></svg>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="toggle-password-pass" id="togglePassword"
+                        fill="#71767b" style="color: rgb(239, 243, 244);">
+                        <g>
+                            <path
+                                d="M12 21c-7.605 0-10.804-8.296-10.937-8.648L.932 12l.131-.352C1.196 11.295 4.394 3 12 3s10.804 8.296 10.937 8.648l.131.352-.131.352C22.804 12.705 19.606 21 12 21zm-8.915-9c.658 1.467 3.5 7 8.915 7s8.257-5.533 8.915-7c-.658-1.467-3.5-7-8.915-7s-8.257 5.533-8.915 7zM12 16c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z">
+                            </path>
+                        </g>
+                    </svg>
                 </div>
 
                 <a href="#" class="forgot-link-pass">Forgot password?</a>
@@ -181,7 +188,8 @@
             <!-- Footer with Login Button and Sign Up Link -->
             <div class="modal-footer-pass">
                 <button class="login-button-pass" id="loginBtn">Log in</button>
-                <p class="signup-prompt-pass">Don't have an account? <a href="#" onclick="switchButton()">Sign up</a></p>
+                <p class="signup-prompt-pass">Don't have an account? <a href="#" onclick="switchButton()">Sign up</a>
+                </p>
             </div>
         </div>
     </div>
@@ -237,14 +245,15 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button id="nextPageOtp" class="next-button">Next</button>
+                    <button id="nextPageOtp" class="next-button">
+                        Next
+                    </button>
                 </div>
             </div>
         </div>
 
         <!-- otp section -->
         <div id="otpSection" class="modal-container-otp display-none">
-            <!-- Header with Back Arrow and Logo -->
             <div class="modal-header-otp">
                 <div id="backArrowOtp" class="back-arrow-otp">&#x2190;</div>
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="logo-x">
@@ -255,8 +264,6 @@
                     </g>
                 </svg>
             </div>
-
-            <!-- Main Content Area -->
             <div class="modal-content-otp">
                 <h2>We sent you a code</h2>
                 <p>Enter it below to verify </p>
@@ -266,13 +273,128 @@
                     <label for="verificationCode" class="input-label-otp">Verification code</label>
                 </div>
 
-                <a href="#" class="forgot-link-otp">Didn't receive email?</a>
+                <div class="forgot-link-otp">Didn't receive email?</div>
             </div>
-
-            <!-- Footer with Next Button -->
             <div class="modal-footer-otp">
                 <button class="next-button-otp" id="nextBtn">Next</button>
             </div>
+        </div>
+
+
+        <!-- password section -->
+        <div class="signup-container-password display-none" id="passwordSection">
+            <header class="signup-header-password">
+                <div class="logo-password">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <g>
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                            </path>
+                        </g>
+                    </svg>
+                </div>
+            </header>
+            <main class="signup-main-password">
+                <h1>You'll need a password</h1>
+                <p>Make sure it's 8 characters or more.</p>
+
+                <div class="input-group-password">
+                    <input type="password" id="password" class="input-field-password" placeholder=" " required>
+                    <label for="password" class="input-label-password">Password</label>
+                    <div class="password-toggle-password">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <g>
+                                <path
+                                    d="M12 14.315c-1.28 0-2.318-1.04-2.318-2.318s1.039-2.318 2.318-2.318 2.318 1.04 2.318 2.318-1.039 2.318-2.318 2.318zm0-3.818c-.82 0-1.48.66-1.48 1.48s.66 1.48 1.48 1.48 1.48-.66 1.48-1.48-.66-1.48-1.48-1.48z">
+                                </path>
+                                <path
+                                    d="M21.83 10.36C19.73 7.72 16.08 6 12 6s-7.73 1.72-9.83 4.36c-.44.55-.44 1.33 0 1.88 2.1 2.64 5.75 4.36 9.83 4.36s7.73-1.72 9.83-4.36c.44-.55.44-1.33 0-1.88zM12 16c-3.66 0-6.91-1.46-8.87-3.88.35-.44.71-.87 1.09-1.28C6.18 8.1 8.94 6.82 12 6.82s5.82 1.28 7.78 3.02c.38.41.74.84 1.09 1.28C18.91 14.54 15.66 16 12 16z">
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="legal-text-password">
+                    By signing up, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>,
+                    including <a href="#">Cookie Use</a>. X may use your contact information, including your email
+                    address and phone number for purposes outlined in our Privacy Policy. Like <a href="#">learning
+                        more</a>. Others will be able to find you by email or phone number, when provided, unless you
+                    choose otherwise <a href="#">here</a>.
+                </div>
+
+            </main>
+            <footer class="signup-footer-password">
+                <button class="signup-button-password">Sign up</button>
+            </footer>
+        </div>
+
+
+        <!-- userName section -->
+        <div class="signup-container-username display-none" id="usernameSection">
+            <div class="logo-username">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <g>
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+            <div class="content-username">
+                <h1>What should we call you?</h1>
+                <p>Your @username is unique. You can always change it later.</p>
+                <div class="input-group-username">
+                    <input type="text" id="usernameTake" class="input-field-username" placeholder=" " required>
+                    <label for="usernameTake" class="input-label-username">Username</label>
+                    <div class="checkmark-username">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <g>
+                                <path
+                                    d="M9.64 18.952l-5.55-4.861 1.317-1.504 3.951 3.459 8.459-10.928L19.423 7.04 9.64 18.952z">
+                                </path>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="suggestions-username">
+                    <!-- <div class="usernameShowone">@roy122687</div>
+                    <div class="usernameShowone">@Roy122687Roy</div> -->
+                </div>
+
+                <div class="show-more-username">Show more</div>
+            </div>
+            <button class="next-button-username">Next</button>
+        </div>
+
+
+        <!-- profile image section -->
+        <div class="profile-picker-container display-none" id="profileSection">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="profile-logo">
+                <g>
+                    <path
+                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                    </path>
+                </g>
+            </svg>
+            <h1 class="profile-h1">Pick a profile picture</h1>
+            <p class="profile-p">Have a favorite selfie? Upload it now.</p>
+            <div class="photo-upload-area" id="photo-upload-area">
+                <input type="file" id="file-upload" accept="image/*" style="display: none;">
+                <div id="upload-placeholder">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="camera-icon">
+                        <g>
+                            <path
+                                d="M19.75 2H4.25C3.01 2 2 3.01 2 4.25v15.5C2 20.99 3.01 22 4.25 22h15.5c1.24 0 2.25-1.01 2.25-2.25V4.25C22 3.01 20.99 2 19.75 2zM4.25 3.5h15.5c.413 0 .75.337.75.75v9.676l-3.858-3.858c-.14-.14-.33-.22-.53-.22s-.39.08-.53.22l-4.3 4.3-1.3-1.3c-.14-.14-.33-.22-.53-.22s-.39.08-.53.22l-3.3 3.3V4.25c0-.413.337-.75.75-.75zm-.002 17c-.413 0-.75-.337-.75-.75V16.8l3.3-3.3 4.3 4.3c.14.14.33.22.53.22s.39-.08-.53-.22l1.3-1.3 4.3 4.3H4.25zM16 10.25c1.24 0 2.25-1.01 2.25-2.25S17.24 5.75 16 5.75 13.75 6.76 13.75 8s1.01 2.25 2.25 2.25z">
+                            </path>
+                        </g>
+                    </svg>
+                    <span>Add photo</span>
+                </div>
+                <img id="profile-preview" src="" alt="Profile Preview">
+            </div>
+
+            <button class="skip-button">Skip for now</button>
         </div>
 
     </div>

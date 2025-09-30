@@ -824,6 +824,7 @@ h2 {
     color: #1d9bf0;
     text-decoration: none;
     font-size: 15px;
+    cursor: pointer;
 }
 
 .forgot-link-otp:hover {
@@ -1030,9 +1031,449 @@ h2 {
     text-decoration: underline;
 }
 
+/* password component css */
+
+/* Main component container */
+.signup-container-password {
+    background-color: #000000;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 600px;
+    height: 650px;
+    padding: 0 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header section with logo-password */
+.signup-header-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 12px;
+    padding-bottom: 20px;
+    min-height: 53px;
+}
+
+.logo-password {
+    width: 30px;
+    height: 30px;
+}
+
+.logo-password svg {
+    fill: #e7e9ea;
+}
+
+/* Main content area */
+.signup-main-password {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-main-password h1 {
+    font-size: 31px;
+    font-weight: 700;
+    line-height: 36px;
+    margin-bottom: 8px;
+}
+
+.signup-main-password p {
+    font-size: 15px;
+    color: #71767b;
+    margin-bottom: 20px;
+}
+
+/* Input field styling */
+.input-group-password {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.input-field-password {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #536471;
+    border-radius: 4px;
+    padding: 16px 40px 2px 12px;
+    font-size: 17px;
+    color: #e7e9ea;
+    height: 4rem;
+}
+
+.input-field-password:focus {
+    outline: none;
+    border-color: #1d9bf0;
+}
+
+.input-label-password {
+    position: absolute;
+    top: 18px;
+    left: 12px;
+    font-size: 17px;
+    color: #71767b;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* Animation for label when input has value or is focused */
+.input-field-password:focus+.input-label-password,
+.input-field-password:not(:placeholder-shown)+.input-label-password {
+    top: 8px;
+    left: 12px;
+    font-size: 13px;
+    color: #1d9bf0;
+}
+
+.input-field-password:not(:focus):not(:placeholder-shown)+.input-label-password {
+    color: #71767b;
+}
+
+.password-toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.password-toggle-password svg {
+    fill: #71767b;
+}
+
+/* Legal text section */
+.legal-text-password {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #71767b;
+    margin-bottom: 24px;
+}
+
+.legal-text-password a {
+    color: #1d9bf0;
+    text-decoration: none;
+}
+
+.legal-text-password a:hover {
+    text-decoration: underline;
+}
+
+/* Footer with sign-up button */
+.signup-footer-password {
+    padding-bottom: 40px;
+}
+
+.signup-button-password {
+    width: 100%;
+    height: 52px;
+    background-color: #eff3f4;
+    color: #0f1419;
+    border: none;
+    border-radius: 26px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.signup-button-password:hover {
+    background-color: #d7dbdc;
+}
 
 
 
+/* username component css */
+/* --- Main Component Container --- */
+.signup-container-username {
+    background-color: #000000;
+    color: #e7e9ea;
+    width: 600px;
+    height: 650px;
+    /* Increased height to better match screenshot */
+    border-radius: 16px;
+    padding: 20px 80px;
+    /* Added more horizontal padding */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* --- 'X' logo-username --- */
+.logo-username {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 24px;
+}
+
+.logo-username svg {
+    fill: #e7e9ea;
+}
+
+/* --- content-username Wrapper --- */
+.content-username {
+    width: 100%;
+    max-width: 364px;
+    /* Matches the typical content-username width on the platform */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Align content-username to the left */
+}
+
+/* --- Headings and Text --- */
+h1 {
+    font-size: 31px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    align-self: flex-start;
+}
+
+p {
+    font-size: 15px;
+    color: #71767b;
+    margin: 0 0 32px 0;
+    line-height: 1.3;
+    align-self: flex-start;
+}
+
+/* --- Username Input Field --- */
+.input-group-username {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.input-field-username {
+    width: 100%;
+    background-color: transparent;
+    border: 1px solid #333639;
+    border-radius: 4px;
+    padding: 24px 12px 8px 12px;
+    /* Padding to make space for the label */
+    font-size: 17px;
+    color: #e7e9ea;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.input-label-username {
+    position: absolute;
+    left: 12px;
+    top: 18px;
+    /* Vertically centered initially */
+    font-size: 17px;
+    color: #71767b;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+/* Floating label effect */
+.input-field-username:focus+.input-label-username,
+.input-field-username:not(:placeholder-shown)+.input-label-username {
+    top: 6px;
+    font-size: 13px;
+    color: #1d9bf0;
+}
+
+.input-field-username:focus {
+    outline: none;
+    border-color: #1d9bf0;
+    box-shadow: 0 0 0 1px #1d9bf0;
+}
+
+/* Green checkmark-username Icon */
+.checkmark-username {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #00ba7c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.checkmark-username svg {
+    fill: #ffffff;
+    width: 14px;
+    height: 14px;
+}
+
+/* --- Username suggestions-username --- */
+.suggestions-username {
+    align-self: flex-start;
+    margin-bottom: 16px;
+    display: flex;
+}
+
+.suggestions-username .usernameShowone {
+    color: #1d9bf0;
+    text-decoration: none;
+    font-size: 15px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+.suggestions-username .usernameShowone:hover {
+    text-decoration: underline;
+}
+
+.show-more-username {
+    color: #1d9bf0;
+    text-decoration: none;
+    font-size: 15px;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+.show-more-username:hover {
+    text-decoration: underline;
+}
+
+/* --- Next Button --- */
+.next-button-username {
+    background-color: #eff3f4;
+    color: #0f1419;
+    border: none;
+    border-radius: 9999px;
+    /* Pill shape */
+    font-size: 17px;
+    font-weight: 700;
+    padding: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-top: auto;
+    /* Pushes the button to the bottom */
+    margin-bottom: 40px;
+    /* Increased bottom margin for spacing */
+}
+
+.next-button-username:hover {
+    background-color: #d7dbdc;
+}
+
+
+
+
+/* profileImage component css */
+/* The main container for the component */
+.profile-picker-container {
+    background-color: #000000;
+    border-radius: 16px;
+    padding: 20px 40px 40px 40px;
+    width: 520px;
+    height: 600px;
+    /* Adjusted height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    color: #E7E9EA;
+    /* Light text color */
+}
+
+/* X logo at the top */
+.profile-logo {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 20px;
+    fill: #E7E9EA;
+}
+
+/* Main heading */
+.profile-h1 {
+    font-size: 31px;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+}
+
+/* Subheading text */
+.profile-p {
+    font-size: 15px;
+    color: #71767B;
+    /* Grey color for the subtext */
+    margin: 0 0 32px 0;
+}
+
+/* The circular photo upload area */
+.photo-upload-area {
+    width: 192px;
+    height: 192px;
+    border-radius: 50%;
+    background-color: #1D1F23;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    position: relative;
+    overflow: hidden;
+    /* Hide anything that goes outside the circle */
+}
+
+.photo-upload-area:hover {
+    background-color: #272A2E;
+}
+
+#upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Camera icon inside the upload circle */
+.camera-icon {
+    width: 32px;
+    height: 32px;
+    fill: #E7E9EA;
+}
+
+.photo-upload-area span {
+    font-size: 15px;
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+#profile-preview {
+    display: none;
+    /* Hidden by default */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the circle without distortion */
+}
+
+/* "Skip for now" button styling */
+.skip-button {
+    width: 100%;
+    padding: 16px 0;
+    font-size: 17px;
+    font-weight: bold;
+    color: #E7E9EA;
+    background-color: #000000;
+    border: 1px solid #536471;
+    border-radius: 9999px;
+    /* Pill shape */
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: auto;
+    /* This pushes the button to the bottom */
+}
+
+.skip-button:hover {
+    background-color: #181919;
+}
 
 
 .display-none {

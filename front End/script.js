@@ -1,3 +1,29 @@
+import { SERVER_URL } from "./constants.js";
+
+document.addEventListener('DOMContentLoaded', async function () {
+    try {
+        const response = await fetch(`${SERVER_URL}/user/current-user`, {
+            method: 'GET',
+            credentials: 'include'
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log('User data retrieved successfully:', data);
+        } else {
+            const errorData = await response.json();
+            console.error('Error retrieving user data:', errorData);
+            if (!window.location.href.includes('login.html')) {
+                window.location.href = "/front End/login/login.html";
+            }
+        }
+    } catch (error) {
+        console.error('Network error:', error);
+        if (!window.location.href.includes('login.html')) {
+            window.location.href = "/front End/login/login.html";
+        }
+    }
+});
 
 const navMenu = document.getElementById('nav-menu');
 const navLinks = navMenu.querySelectorAll('.nav-link');
@@ -61,7 +87,7 @@ window.addEventListener('click', function (event) {
     if (event.target === closePostButton) {
         postModal.classList.add('display-none');
         document.body.style.overflow = ''; // Restore scrolling
-    }   
+    }
     if (event.target.classList.contains('modal-overlay-post')) {
         postModal.classList.add('display-none');
         document.body.style.overflow = ''; // Restore scrolling
