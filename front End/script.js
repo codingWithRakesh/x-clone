@@ -14,13 +14,13 @@ document.addEventListener('DOMContentLoaded', async function () {
             const errorData = await response.json();
             console.error('Error retrieving user data:', errorData);
             if (!window.location.href.includes('login.html')) {
-                window.location.href = "/front End/login/login.html";
+                window.location.href = "/login/login.html";
             }
         }
     } catch (error) {
         console.error('Network error:', error);
         if (!window.location.href.includes('login.html')) {
-            window.location.href = "/front End/login/login.html";
+            window.location.href = "/login/login.html";
         }
     }
 });
