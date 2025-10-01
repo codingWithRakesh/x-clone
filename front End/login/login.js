@@ -435,7 +435,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     const data = await response.json();
                     // console.log('Profile image uploaded successfully:', data);
                     alert('Profile picture uploaded successfully!');
-                    window.location.href = "/front End/index.html";
+                    window.location.href = "/index.html";
                 } else {
                     const errorData = await response.json();
                     alert(`Error: ${errorData.message}`);
