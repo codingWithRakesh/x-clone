@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="../assets/images/X_logo.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Notification / X</title>
     <link rel="stylesheet" href="../styles/notifications.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../media.css">
     <link rel="stylesheet" href="../media/notificationsMedia.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script type="module" src="../scripts/notifications.js" defer></script>
     <script type="module" src="../script.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+
 </head>
 <body>
     <div class="container">
@@ -243,27 +249,86 @@
                 </div>
             </div>
         </div>
-
-
-
-        <!-- Main Content Area -->
+<!-- Main Content Area -->
         <div class="mainContainer">
-            <div class="mainCOl"></div>
-
-
-            
-            <div class="rightCol">
-                <aside class="right-sidebar">
-                    <div class="search-bar-container" style="position: relative;">
-                        <svg viewBox="0 0 24 24" class="search-icon">
-                            <g>
-                                <path
-                                    d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.416-.726 4.596-1.907 1.18-1.18 1.904-2.8 1.904-4.593 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.83-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.432 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z">
-                                </path>
-                            </g>
-                        </svg>
-                        <input type="text" placeholder="Search" class="search-bar">
+            <div class="mainCOl">
+               <div class="mainColoumn">
+                    <div class="noti">
+                        Notifications
                     </div>
+                    <div class="tab">
+                        <button class="noti-nav-button" id="all"><a href="#all" class="link">All</a>
+                        </button>
+                        <button class="noti-nav-button" id="Verified"><a href="#verified" class="link">Verified</a>
+                        </button>
+                        <button class="noti-nav-button" id="Mentions"><a href="#mentions" class="link">Mentions</a></button>
+                        <div class="sliding-box"></div>
+                    </div>                    
+                
+                    <div class="notifications">
+                         <div class="star-icon"><img src="Images_of_msg/ChatGPT Image Sep 7, 2025, 08_28_30 AM.png"></div>
+                        <img src="Images_of_msg/pop.png" alt="profile">
+                        <i class="fas fa-ellipsis-h" id="elipses"aria-label="Open menu" aria-expanded="false" aria-controls="navPanel"></i>
+                            <div class="dropdown2" id="dropdownMenu">
+                                <i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;<a href="#">See Less Often</a>
+    
+                            </div>
+                            <p id="text">11hr </p>
+                        <p>
+                            Pop Artist
+                        </p>
+                        <p class="tex">
+                        Pop Artist shares update with fans:<br><br> "New album dropping next month — this one’s for everyone who believed in me."<br>pic.x.com/A9B4YxZqp</p>
+                    </div>
+                    <div class="notifications">
+                         <div class="star-icon"><img src="Images_of_msg/ChatGPT Image Sep 7, 2025, 08_28_30 AM.png"></div>
+                        <img src="Images_of_msg/techno1.jpeg" alt="profile">
+                        <i class="fas fa-ellipsis-h" id="elipses"aria-label="Open menu" aria-expanded="false" aria-controls="navPanel"></i>
+                            <div class="dropdown2" id="dropdownMenu">
+                                <i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;<a href="#">See Less Often</a>
+    
+                            </div>
+                            <p id="text">21hr </p>
+                        <p>
+                            Techno India
+                        </p>
+                        <p class="tex">
+                         "Tech giant announces a major AI breakthrough, promising faster and more reliable applications across industries."</p>
+                    </div>
+                    
+
+                    <div class="notification">
+                        <div class="star-icon1">
+                            <img src="Images_of_msg/ChatGPT Image Sep 7, 2025, 08_28_30 AM.png">
+                        </div>
+                        <img src="Images_of_msg/pop.png" alt="profile">
+                        <i class="fas fa-ellipsis-h" id="elipses" aria-label="Open menu" aria-expanded="false" aria-controls="navPanel"></i>
+                        <div class="dropdown3" id="dropdownMenu1">
+                            <i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;<a href="#">See Less Often</a>
+                        </div>
+                        <p id="text1">11hr </p>
+                        <p>Pop Artist</p>
+                        <p class="tex">
+                            Pop Artist shares update with fans:<br><br> 
+                            "New album dropping next month — this one’s for everyone who believed in me."<br>
+                            pic.x.com/A9B4YxZqp
+                        </p>
+                    </div>
+               </div>
+               </div>
+<!-- RIGHTT COLOUMN -->
+    <div class="rightCol">
+        <aside class="right-sidebar">
+                <div class="search-bar-container" style="position: relative;">
+                    <svg viewBox="0 0 24 24" class="search-icon">
+                        <g>
+                            <path
+                                d="M10.25 3.75c-3.59 0-6.5 2.91-6.5 6.5s2.91 6.5 6.5 6.5c1.795 0 3.416-.726 4.596-1.907 1.18-1.18 1.904-2.8 1.904-4.593 0-3.59-2.91-6.5-6.5-6.5zm-8.5 6.5c0-4.694 3.806-8.5 8.5-8.5s8.5 3.806 8.5 8.5c0 1.986-.682 3.83-1.824 5.262l4.781 4.781-1.414 1.414-4.781-4.781c-1.432 1.142-3.276 1.824-5.262 1.824-4.694 0-8.5-3.806-8.5-8.5z">
+                            </path>
+                        </g>
+                    </svg>
+                <input type="text" placeholder="Search" class="search-bar">
+                </div>
                     <!-- <section class="right-sidebar-card">
                         <h2 class="card-title">Subscribe to Premium</h2>
                         <p class="subscribe-text">Subscribe to unlock new features and if eligible, receive a share of
@@ -369,5 +434,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+//sliding line
+    $(document).ready(function(){
+        $("#Verified").click(function(){
+            $(".sliding-box").animate({left:"173px",width:"140px"},10);
+    });
+    $("#Mentions").click(function(){
+        $(".sliding-box").animate({left:"355px",width:"140px"},10);
+    });
+    $("#all").click(function(){
+        $(".sliding-box").animate({left:"44px",width:"60px"},10);
+    });
+});
+//elipses div add
+const ellipsis = document.querySelector("#elipses");
+const dropdown = document.getElementById("dropdownMenu");
+
+ellipsis.addEventListener("click", (e) => {
+  e.stopPropagation(); // prevent auto-close immediately
+  dropdown.style.display = dropdown.style.display === "flex" ? "none" : "flex";
+});
+
+// Close menu if clicking outside
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".notifications")) {
+    dropdown.style.display = "none";
+  }
+});
+
+
+    </script>
 </body>
 </html>
