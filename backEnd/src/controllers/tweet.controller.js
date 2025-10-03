@@ -692,61 +692,32 @@ const getTimeline = asyncHandler(async (req, res, next) => {
         .lean();
 
     const followingIds = followingUsers.map(follow => follow.following);
-    
     const allUserIds = [...followingIds, new mongoose.Types.ObjectId(userId)];
 
-    const tweets = await Tweet.aggregate([
+    // Single aggregation for both tweets and count
+    const result = await Tweet.aggregate([
         {
             $match: {
                 $and: [
+                    { isReply: false },
                     {
                         $or: [
                             { author: { $in: allUserIds } },
-                            { visibility: 'public' } 
+                            { visibility: 'public' }
                         ]
-                    },
-                    { isReply: false } 
+                    }
                 ]
             }
         },
         {
             $sort: { createdAt: -1 }
         },
+        // Facet to get both paginated results and total count
         {
-            $skip: skip
-        },
-        {
-            $limit: parseInt(limit)
-        },
-        {
-            $lookup: {
-                from: 'users',
-                localField: 'author',
-                foreignField: '_id',
-                as: 'author',
-                pipeline: [
-                    {
-                        $project: {
-                            username: 1,
-                            fullName: 1,
-                            avatarUrl: 1,
-                            isVerified: 1,
-                            followersCount: 1
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            $unwind: '$author'
-        },
-        {
-            $lookup: {
-                from: 'tweets',
-                localField: 'quoteOf',
-                foreignField: '_id',
-                as: 'quoteOf',
-                pipeline: [
+            $facet: {
+                paginatedResults: [
+                    { $skip: skip },
+                    { $limit: parseInt(limit) },
                     {
                         $lookup: {
                             from: 'users',
@@ -759,7 +730,8 @@ const getTimeline = asyncHandler(async (req, res, next) => {
                                         username: 1,
                                         fullName: 1,
                                         avatarUrl: 1,
-                                        isVerified: 1
+                                        isVerified: 1,
+                                        followersCount: 1
                                     }
                                 }
                             ]
@@ -769,157 +741,156 @@ const getTimeline = asyncHandler(async (req, res, next) => {
                         $unwind: '$author'
                     },
                     {
+                        $lookup: {
+                            from: 'tweets',
+                            localField: 'quoteOf',
+                            foreignField: '_id',
+                            as: 'quoteOf',
+                            pipeline: [
+                                {
+                                    $lookup: {
+                                        from: 'users',
+                                        localField: 'author',
+                                        foreignField: '_id',
+                                        as: 'author',
+                                        pipeline: [
+                                            {
+                                                $project: {
+                                                    username: 1,
+                                                    fullName: 1,
+                                                    avatarUrl: 1,
+                                                    isVerified: 1
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    $unwind: '$author'
+                                },
+                                {
+                                    $project: {
+                                        content: 1,
+                                        media: 1,
+                                        author: 1,
+                                        visibility: 1,
+                                        createdAt: 1
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        $unwind: {
+                            path: '$quoteOf',
+                            preserveNullAndEmptyArrays: true
+                        }
+                    },
+                    {
+                        $addFields: {
+                            isLiked: {
+                                $cond: {
+                                    if: { $isArray: "$likes" },
+                                    then: { 
+                                        $in: [
+                                            new mongoose.Types.ObjectId(userId), 
+                                            "$likes"
+                                        ] 
+                                    },
+                                    else: false
+                                }
+                            },
+                            isRetweeted: {
+                                $cond: {
+                                    if: { $isArray: "$retweets" },
+                                    then: { 
+                                        $in: [
+                                            new mongoose.Types.ObjectId(userId), 
+                                            "$retweets"
+                                        ] 
+                                    },
+                                    else: false
+                                }
+                            },
+                            isFollowingAuthor: {
+                                $in: [
+                                    "$author._id",
+                                    allUserIds 
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        $addFields: {
+                            quoteOf: {
+                                $cond: {
+                                    if: {
+                                        $and: [
+                                            { $ne: ["$quoteOf", null] },
+                                            { $eq: ["$quoteOf.visibility", "private"] },
+                                            { 
+                                                $not: {
+                                                    $in: [
+                                                        "$quoteOf.author._id",
+                                                        allUserIds
+                                                    ]
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    then: null,
+                                    else: "$quoteOf"
+                                }
+                            }
+                        }
+                    },
+                    // CORRECTED MATCH STAGE - Fixed the $in usage
+                    {
+                        $match: {
+                            $or: [
+                                { visibility: { $in: ['public', 'protected'] } },
+                                { 
+                                    $and: [
+                                        { visibility: 'private' },
+                                        { 
+                                            author: { $in: allUserIds } // Fixed: proper $in syntax
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
                         $project: {
                             content: 1,
                             media: 1,
                             author: 1,
+                            replyTo: 1,
+                            isReply: 1,
+                            isQuote: 1,
+                            quoteOf: 1,
+                            likesCount: 1,
+                            repliesCount: 1,
+                            retweetCount: 1,
                             visibility: 1,
-                            createdAt: 1
+                            pinned: 1,
+                            createdAt: 1,
+                            updatedAt: 1,
+                            isLiked: 1,
+                            isRetweeted: 1,
+                            isFollowingAuthor: 1
                         }
                     }
+                ],
+                totalCount: [
+                    { $count: "count" }
                 ]
-            }
-        },
-        {
-            $unwind: {
-                path: '$quoteOf',
-                preserveNullAndEmptyArrays: true
-            }
-        },
-        {
-            $addFields: {
-                isLiked: {
-                    $cond: {
-                        if: { $isArray: "$likes" },
-                        then: { 
-                            $in: [
-                                new mongoose.Types.ObjectId(userId), 
-                                "$likes"
-                            ] 
-                        },
-                        else: false
-                    }
-                },
-                isRetweeted: {
-                    $cond: {
-                        if: { $isArray: "$retweets" },
-                        then: { 
-                            $in: [
-                                new mongoose.Types.ObjectId(userId), 
-                                "$retweets"
-                            ] 
-                        },
-                        else: false
-                    }
-                },
-                isFollowingAuthor: {
-                    $in: [
-                        "$author._id",
-                        allUserIds 
-                    ]
-                }
-            }
-        },
-        {
-            $addFields: {
-                quoteOf: {
-                    $cond: {
-                        if: {
-                            $and: [
-                                { $ne: ["$quoteOf", null] },
-                                { $eq: ["$quoteOf.visibility", "private"] },
-                                { 
-                                    $not: {
-                                        $in: [
-                                            "$quoteOf.author._id",
-                                            allUserIds
-                                        ]
-                                    }
-                                }
-                            ]
-                        },
-                        then: null,
-                        else: "$quoteOf"
-                    }
-                }
-            }
-        },
-        {
-            $match: {
-                $or: [
-                    { visibility: { $in: ['public', 'protected'] } },
-                    { 
-                        $and: [
-                            { visibility: 'private' },
-                            { 
-                                $in: [
-                                    "$author._id",
-                                    allUserIds
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            $project: {
-                content: 1,
-                media: 1,
-                author: 1,
-                replyTo: 1,
-                isReply: 1,
-                isQuote: 1,
-                quoteOf: 1,
-                likesCount: 1,
-                repliesCount: 1,
-                retweetCount: 1,
-                visibility: 1,
-                pinned: 1,
-                createdAt: 1,
-                updatedAt: 1,
-                isLiked: 1,
-                isRetweeted: 1,
-                isFollowingAuthor: 1
             }
         }
     ]);
 
-    const totalTweets = await Tweet.aggregate([
-        {
-            $match: {
-                $and: [
-                    {
-                        $or: [
-                            { author: { $in: allUserIds } },
-                            { visibility: 'public' }
-                        ]
-                    },
-                    { isReply: false }
-                ]
-            }
-        },
-        {
-            $match: {
-                $or: [
-                    { visibility: { $in: ['public', 'protected'] } },
-                    { 
-                        $and: [
-                            { visibility: 'private' },
-                            { 
-                                author: { $in: allUserIds }
-                            }
-                        ]
-                    }
-                ]
-            }
-        },
-        {
-            $count: "total"
-        }
-    ]);
-
-    const totalCount = totalTweets.length > 0 ? totalTweets[0].total : 0;
+    const tweets = result[0].paginatedResults;
+    const totalCount = result[0].totalCount[0]?.count || 0;
 
     return res.status(200).json(
         new ApiResponse(200, {
