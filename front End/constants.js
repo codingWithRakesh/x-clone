@@ -1,0 +1,1 @@
+export const SERVER_URL = "https://x-clone-server-dot.vercel.app/api/v1";
