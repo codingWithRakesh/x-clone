@@ -3,6 +3,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/apiResponse.js";
 import { Like } from "../models/like.model.js";
 import { Tweet } from "../models/tweet.model.js";
+import { Notification } from "../models/notification.model.js";
 import mongoose from "mongoose";
 
 const likeTweet = asyncHandler(async (req, res, next) => {
@@ -24,6 +25,12 @@ const likeTweet = asyncHandler(async (req, res, next) => {
         if (!tweet) {
             throw new ApiError(404, "Tweet not found");
         }
+        await Notification.deleteOne({
+            user: tweet.author._id, // who should receive the notification
+            type: 'like',
+            fromUser: userId,
+            tweet: tweetId
+        });
         return res.status(200).json(new ApiResponse(200, unLike, "Tweet unliked successfully"));
     }
 
@@ -35,6 +42,12 @@ const likeTweet = asyncHandler(async (req, res, next) => {
     if (!tweet) {
         throw new ApiError(404, "Tweet not found");
     }
+    await Notification.create({
+        user: tweet.author._id, // who should receive the notification
+        type: 'like',
+        fromUser: userId,
+        tweet: tweetId
+    });
     return res.status(201).json(new ApiResponse(201, like, "Tweet liked successfully"));
 });
 
