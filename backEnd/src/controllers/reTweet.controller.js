@@ -8,6 +8,7 @@ import sharp from "sharp";
 import mongoose from "mongoose";
 import { Follow } from "../models/follow.model.js";
 import { User } from "../models/user.model.js";
+import { Notification } from "../models/notification.model.js";
 
 
 const userLookup = {
@@ -144,6 +145,13 @@ const createRetweet = asyncHandler(async (req, res) => {
         user: userId,
         tweet: tweetId,
         comment: comment || undefined
+    });
+
+    await Notification.create({
+        user: tweet[0].author._id, // who should receive the notification
+        type: 'retweet',
+        fromUser: userId,
+        tweet: tweetId
     });
 
     // Increment retweet count on the original tweet
