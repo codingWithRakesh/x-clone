@@ -20,46 +20,68 @@ const registerUser = asyncHandler(async (req, res, next) => {
         throw new ApiError(400, "Email, Full Name and Date of Birth are required.")
     }
 
-    const existingUser = await User.findOne({ email: email.toLowerCase() })
-    if (existingUser) {
-        throw new ApiError(409, "Email is already registered. Please login or use a different email.")
-    }
-
     const { otp, expire } = generateOTP(6)
     if (!otp || !expire) {
         throw new ApiError(500, "Failed to generate OTP. Please try again.")
     }
-
     const hashedOTP = await bcrypt.hash(otp, 10);
 
-    const user = await User.create({
-        email: email.toLowerCase(),
-        fullName: fullName.trim(),
-        dateOfBirth: {
-            date: dateOfBirth.date,
-            month: dateOfBirth.month,
-            year: dateOfBirth.year
-        },
-        OTP: {
-            code: hashedOTP,
-            expiresAt: expire,
-            otpRequests: 1,
-            lastOtpRequestAt: new Date(),
+    let user;
+    const existingByEmail = await User.findOne({ email: email.toLowerCase() }).select("+password");
+
+    if (existingByEmail) {
+        if (existingByEmail.isVerified && existingByEmail.password) {
+            throw new ApiError(400, "Email is already registered. Please login or use different email.")
+        } else {
+            user = await User.findByIdAndUpdate(existingByEmail._id, {
+                fullName: fullName.trim(),
+                dateOfBirth: {
+                    date: dateOfBirth.date,
+                    month: dateOfBirth.month,
+                    year: dateOfBirth.year
+                },
+                OTP: {
+                    code: hashedOTP,
+                    expiresAt: expire,
+                    otpRequests: existingByEmail.OTP?.otpRequests ? existingByEmail.OTP.otpRequests + 1 : 1,
+                    lastOtpRequestAt: new Date(),
+                }
+            }, { new: true })
+
+            if (!user) {
+                throw new ApiError(500, "Failed to update user. Please try again.")
+            }
         }
-    })
+    } else {
+        user = await User.create({
+            email: email.toLowerCase(),
+            fullName: fullName.trim(),
+            dateOfBirth: {
+                date: dateOfBirth.date,
+                month: dateOfBirth.month,
+                year: dateOfBirth.year
+            },
+            OTP: {
+                code: hashedOTP,
+                expiresAt: expire,
+                otpRequests: 1,
+                lastOtpRequestAt: new Date(),
+            }
+        })
 
-    if (!user) {
-        throw new ApiError(500, "Failed to create user. Please try again.")
+        if (!user) {
+            throw new ApiError(500, "Failed to create user. Please try again.")
+        }
+
+        const usernames = await generateUserName(user.fullName, user.email)
+        if (!usernames || usernames.length === 0) {
+            throw new ApiError(500, "Failed to generate default username. Please try again.")
+        }
+
+        const defaultUsername = usernames[0];
+        user.username = defaultUsername;
+        await user.save({ validateBeforeSave: false });
     }
-
-    const usernames = await generateUserName(user.fullName, user.email)
-    if(!usernames || usernames.length === 0){
-        throw new ApiError(500, "Failed to generate default username. Please try again.")
-    }
-
-    const defaultUsername = usernames[0];
-    user.username = defaultUsername;
-    await user.save({ validateBeforeSave: false });
 
     const emailSend = await sendVerificationEmail(user.email, otp)
     if (!emailSend) {
@@ -93,7 +115,7 @@ const reSendOTP = asyncHandler(async (req, res, next) => {
     if (user.OTP.otpRequests >= MAX_OTP_REQUESTS) {
         user.OTP.otpBlockedUntil = new Date(Date.now() + OTP_BLOCK_TIME);
         await user.save({ validateBeforeSave: false });
-        
+
         const remainingTime = Math.ceil(OTP_BLOCK_TIME / 1000 / 60);
         throw new ApiError(429, `Too many OTP requests. Please try again after ${remainingTime} minutes.`)
     }
@@ -151,23 +173,11 @@ const verifyOTP = asyncHandler(async (req, res, next) => {
     user.OTP.code = undefined
     user.OTP.expiresAt = undefined
     user.OTP.otpRequests = 0
+    user.password = ""
 
     await user.save({ validateBeforeSave: false });
 
-    await sendWelcomeEmail(user.email, user.fullName);
-
-    const { accessToken, refreshToken } = await accessAndRefreshTokenGenrator(user._id, User)
-
-    if(!accessToken || !refreshToken){
-        throw new ApiError(500, "Failed to generate authentication tokens. Please try logging in.")
-    }
-
-    return res
-        .status(200)
-        .cookie("accessToken", accessToken, options)
-        .cookie("refreshToken", refreshToken, options)
-        .json(new ApiResponse(200, {user, accessToken, refreshToken}, "Email verified successfully. You can now log in."))
-
+    return res.status(200).json(new ApiResponse(200, { user }, "Email verified successfully. You can now log in."))
 })
 
 const setPassword = asyncHandler(async (req, res, next) => {
@@ -193,7 +203,19 @@ const setPassword = asyncHandler(async (req, res, next) => {
     user.password = hashedPassword;
     await user.save({ validateBeforeSave: false });
 
-    return res.status(200).json(new ApiResponse(200, null, "Password set successfully. You can now log in."))
+    await sendWelcomeEmail(user.email, user.fullName);
+
+    const { accessToken, refreshToken } = await accessAndRefreshTokenGenrator(user._id, User)
+
+    if (!accessToken || !refreshToken) {
+        throw new ApiError(500, "Failed to generate authentication tokens. Please try logging in.")
+    }
+
+    return res
+        .status(200)
+        .cookie("accessToken", accessToken, options)
+        .cookie("refreshToken", refreshToken, options)
+        .json(new ApiResponse(200, { accessToken, refreshToken }, "Password set successfully. You can now log in."))
 })
 
 const sendDefaultUserName = asyncHandler(async (req, res, next) => {
@@ -305,7 +327,7 @@ const setProfileImage = asyncHandler(async (req, res, next) => {
     if (user.avatarUrl) {
         const publicId = getPublicId(user.avatarUrl);
         await deleteFromCloudinary(publicId);
-    }else{
+    } else {
         user.avatarUrl = fileUrl;
         await user.save({ validateBeforeSave: false });
     }
@@ -315,16 +337,16 @@ const setProfileImage = asyncHandler(async (req, res, next) => {
 
 const loginUser = asyncHandler(async (req, res, next) => {
     const { email, password } = req.body
-    if(!email || !password){
+    if (!email || !password) {
         throw new ApiError(400, "Email and Password are required.")
     }
 
     const user = await User.findOne({ email: email.toLowerCase() }).select("+password +refreshToken +loginAttempts +isLocked +lockUntil")
-    if(!user){
+    if (!user) {
         throw new ApiError(404, "User not found.")
     }
 
-    if(!user.isVerified){
+    if (!user.isVerified) {
         throw new ApiError(400, "Email is not verified. Please verify your email before logging in.")
     }
 
@@ -343,15 +365,15 @@ const loginUser = asyncHandler(async (req, res, next) => {
     }
 
     const isPasswordMatch = await bcrypt.compare(password, user.password);
-    if(!isPasswordMatch){
+    if (!isPasswordMatch) {
         user.loginAttempts += 1;
 
         if (user.loginAttempts >= MAX_LOGIN_ATTEMPTS) {
             user.isLocked = true;
             user.lockUntil = new Date(Date.now() + LOCK_TIME);
-            
+
             await user.save({ validateBeforeSave: false });
-            
+
             throw new ApiError(400, `Too many failed attempts. Account locked for ${LOCK_TIME / 1000 / 60} minutes.`)
         }
 
@@ -368,7 +390,7 @@ const loginUser = asyncHandler(async (req, res, next) => {
 
     const { accessToken, refreshToken } = await accessAndRefreshTokenGenrator(user._id, User)
 
-    if(!accessToken || !refreshToken){
+    if (!accessToken || !refreshToken) {
         throw new ApiError(500, "Failed to generate authentication tokens. Please try logging in.")
     }
 
@@ -378,7 +400,7 @@ const loginUser = asyncHandler(async (req, res, next) => {
         .status(200)
         .cookie("accessToken", accessToken, options)
         .cookie("refreshToken", refreshToken, options)
-        .json(new ApiResponse(200, {user, accessToken, refreshToken}, "Logged in successfully."))
+        .json(new ApiResponse(200, { user, accessToken, refreshToken }, "Logged in successfully."))
 })
 
 const logoutUser = asyncHandler(async (req, res, next) => {
@@ -462,7 +484,7 @@ const setBannerImage = asyncHandler(async (req, res, next) => {
     if (user.bannerUrl) {
         const publicId = getPublicId(user.bannerUrl);
         await deleteFromCloudinary(publicId);
-    }else{
+    } else {
         user.bannerUrl = fileUrl;
         await user.save({ validateBeforeSave: false });
     }
