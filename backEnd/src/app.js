@@ -16,7 +16,7 @@ import userRouter from "./routes/user.route.js"
 import tweetRouter from "./routes/tweet.route.js"
 import reTweetRouter from "./routes/reTweet.route.js"
 import likeRouter from "./routes/like.route.js"
-// import followRouter from "./routes/follow.route.js"
+import followRouter from "./routes/follow.route.js"
 // import communityRouter from "./routes/community.route.js"
 // import communityMemberRouter from "./routes/communityMember.route.js"
 import bookmarkRouter from "./routes/bookmark.route.js"
@@ -29,7 +29,7 @@ app.use("/api/v1/user", userRouter)
 app.use("/api/v1/tweet", tweetRouter)
 app.use("/api/v1/reTweet", reTweetRouter)
 app.use("/api/v1/like", likeRouter)
-// app.use("/api/v1/follow", followRouter)
+app.use("/api/v1/follow", followRouter)
 // app.use("/api/v1/community", communityRouter)
 // app.use("/api/v1/communityMember", communityMemberRouter)
 app.use("/api/v1/bookmark", bookmarkRouter)
