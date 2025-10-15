@@ -18,7 +18,7 @@ import reTweetRouter from "./routes/reTweet.route.js"
 import likeRouter from "./routes/like.route.js"
 import followRouter from "./routes/follow.route.js"
 import communityRouter from "./routes/community.route.js"
-// import communityMemberRouter from "./routes/communityMember.route.js"
+import communityMemberRouter from "./routes/communityMember.route.js"
 import bookmarkRouter from "./routes/bookmark.route.js"
 import messageRouter from "./routes/message.route.js"
 // import grockMessageRouter from "./routes/grockMessage.route.js"
@@ -31,7 +31,7 @@ app.use("/api/v1/reTweet", reTweetRouter)
 app.use("/api/v1/like", likeRouter)
 app.use("/api/v1/follow", followRouter)
 app.use("/api/v1/community", communityRouter)
-// app.use("/api/v1/communityMember", communityMemberRouter)
+app.use("/api/v1/communityMember", communityMemberRouter)
 app.use("/api/v1/bookmark", bookmarkRouter)
 app.use("/api/v1/message", messageRouter)
 // app.use("/api/v1/grockMessage", grockMessageRouter)
