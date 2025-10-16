@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Happening Now - Sign Up</title>
+    <link rel="stylesheet" href="login.css">
+    <script type="module" src="login.js" defer></script>
+</head>
+
+<body>
+    <main class="main-container">
+
+        <!-- Left section with X logo -->
+        <section class="logo-container">
+            <img src="../assets/images/X_logo.jpg" alt="X logo">
+        </section>
+
+        <!-- Right section with sign up form -->
+        <section class="form-container">
+            <h1 class="main-heading">Happening now</h1>
+            <h2 class="sub-heading">Join today.</h2>
+
+            <button type="button" class="auth-button google-button" aria-label="Sign up with Google">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Google_Favicon_2025.svg/250px-Google_Favicon_2025.svg.png"
+                    alt="Google logo in multi colors"
+                    onerror="this.onerror=null; this.src='https://placehold.co/20x20/gray/png?text=G';"
+                    class="button-icon" loading="lazy" />
+                Sign up with Google
+            </button>
+
+            <button type="button" class="auth-button apple-button" aria-label="Sign up with Apple">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/732px-Apple_logo_black.svg.png"
+                    alt="Apple logo in black silhouette"
+                    onerror="this.onerror=null; this.src='https://placehold.co/16x20/gray/png?text=A';"
+                    class="button-icon" loading="lazy" />
+                Sign up with Apple
+            </button>
+
+            <div class="divider" aria-hidden="true">
+                <hr class="divider-line" />
+                <span class="divider-text">OR</span>
+                <hr class="divider-line" />
+            </div>
+
+            <button type="button" id="signUpButton" class="create-account-button" aria-label="Create account">
+                Create account
+            </button>
+
+            <p class="terms-text">
+                By signing up, you agree to the
+                <a href="#" tabindex="0">Terms of Service</a> and
+                <a href="#" tabindex="0">Privacy Policy</a>, including
+                <a href="#" tabindex="0">Cookie Use</a>.
+            </p>
+
+            <p class="account-prompt">
+                Already have an account?
+            </p>
+
+            <button type="button" id="signInButton" class="signin-button" aria-label="Sign in">
+                Sign in
+            </button>
+        </section>
+    </main>
+
+    <footer class="footer" aria-label="Footer navigation and copyright">
+        <nav class="footer-nav" aria-label="Footer links" role="navigation">
+            <a href="#" tabindex="0">About</a>
+            <a href="#" tabindex="0">Download the X app</a>
+            <a href="#" tabindex="0">Grok</a>
+            <a href="#" tabindex="0">Help Center</a>
+            <a href="#" tabindex="0">Terms of Service</a>
+            <a href="#" tabindex="0">Privacy Policy</a>
+            <a href="#" tabindex="0">Cookie Policy</a>
+            <a href="#" tabindex="0">Accessibility</a>
+            <a href="#" tabindex="0">Ads info</a>
+            <a href="#" tabindex="0">Blog</a>
+            <a href="#" tabindex="0">Careers</a>
+            <a href="#" tabindex="0">Brand Resources</a>
+            <a href="#" tabindex="0">Advertising</a>
+            <a href="#" tabindex="0">Marketing</a>
+            <a href="#" tabindex="0">X for Business</a>
+            <a href="#" tabindex="0">Developers</a>
+            <a href="#" tabindex="0">Directory</a>
+            <a href="#" tabindex="0">Settings</a>
+        </nav>
+        <div class="copyright" aria-label="Copyright information">
+            © 2025 X Corp.
+        </div>
+    </footer>
+
+
+    <!-- sign in component -->
+
+    <div id="signInModal" class="modal-overlay-two display-none">
+        <!-- for input fields take email -->
+        <div class="modal-container-two " id="signUPInput" >
+            <div class="modal-header-two">
+                <button onclick="closeSignInModal()" class="close-button-two">&times;</button>
+                <svg viewBox="0 0 24 24" class="modal-logo">
+                    <g>
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+                <!-- Empty div to balance the flex layout -->
+                <div style="width: 24px;"></div>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="modal-content-two">
+                <div class="modal-body-two">
+                    <h2 class="modal-title-two">Sign in to X</h2>
+
+                    <!-- Social Login Buttons -->
+                    <button class="modal-button-two btn-social-two">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                            alt="Google" class="social-logo">
+                        <span>Sign in with Google</span>
+                    </button>
+                    <button class="modal-button-two btn-social-two">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple"
+                            class="social-logo">
+                        <span>Sign in with Apple</span>
+                    </button>
+
+                    <!-- "or" separator-two -->
+                    <div class="separator-two">or</div>
+
+                    <!-- Input for username -->
+                    <input type="text" class="input-field-two" id="username" name="username"
+                        placeholder="Phone, email, or username">
+
+                    <!-- Action Buttons -->
+                    <button id="nextToPassword" class="modal-button-two btn-primary-two">Next</button>
+                    <button class="modal-button-two btn-secondary-two">Forgot password?</button>
+
+                    <!-- Footer Link -->
+                    <div class="modal-footer-two">
+                        <p>Don't have an account? <a href="#" onclick="switchButton()">Sign up</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- take password field -->
+        <div id="signUPPassword" class="modal-container-pass display-none">
+            <!-- Header with Close Button and Logo -->
+            <div class="modal-header-pass">
+                <div onclick="closeSignInModal()" class="close-button-pass" id="closeBtn">&times;</div>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="logo-x">
+                    <g>
+                        <path fill="#e7e9ea"
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="modal-content-pass">
+                <h2>Enter your password</h2>
+
+                <div class="input-group-pass">
+                    <div class="static-field-pass">tarapadagarai898@gmail.com</div>
+                    <label class="input-label-pass">Email</label>
+                </div>
+
+                <div class="input-group-pass password-wrapper-pass">
+                    <input type="password" id="passwordField" class="input-field-pass" placeholder=" " required>
+                    <label for="passwordField" class="input-label-pass">Password</label>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="toggle-password-pass" id="togglePassword" fill="#71767b" style="color: rgb(239, 243, 244);"><g><path d="M12 21c-7.605 0-10.804-8.296-10.937-8.648L.932 12l.131-.352C1.196 11.295 4.394 3 12 3s10.804 8.296 10.937 8.648l.131.352-.131.352C22.804 12.705 19.606 21 12 21zm-8.915-9c.658 1.467 3.5 7 8.915 7s8.257-5.533 8.915-7c-.658-1.467-3.5-7-8.915-7s-8.257 5.533-8.915 7zM12 16c-2.206 0-4-1.794-4-4s1.794-4 4-4 4 1.794 4 4-1.794 4-4 4zm0-6c-1.103 0-2 .897-2 2s.897 2 2 2 2-.897 2-2-.897-2-2-2z"></path></g></svg>
+                </div>
+
+                <a href="#" class="forgot-link-pass">Forgot password?</a>
+            </div>
+
+            <!-- Footer with Login Button and Sign Up Link -->
+            <div class="modal-footer-pass">
+                <button class="login-button-pass" id="loginBtn">Log in</button>
+                <p class="signup-prompt-pass">Don't have an account? <a href="#" onclick="switchButton()">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- sign up component -->
+    <div id="signUpModal" class="modal-overlay display-none">
+        <!-- for input fields -->
+        <div id="signUpModalInput" class="modal-container ">
+            <div class="modal-header">
+                <button onclick="closeSignUpModal()" class="close-button">&times;</button>
+                <svg viewBox="0 0 24 24" class="modal-logo">
+                    <g>
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="modal-content-wrapper">
+                <div class="modal-body">
+                    <h2 class="modal-title">Create your account</h2>
+
+                    <div class="input-group">
+                        <input type="text" id="name-input" class="input-field" placeholder="Name" maxlength="50">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email-input" class="input-field" placeholder="Email">
+                    </div>
+
+                    <div class="dob-section">
+                        <h3>Date of birth</h3>
+                        <p>This will not be shown publicly. Confirm your own age, even if this account is for a
+                            business, a pet, or something else.</p>
+                        <div class="dob-selectors">
+                            <select id="month-select" class="select-field">
+                                <option value="" disabled selected>Month</option>
+                                <!-- Months would be populated here -->
+                            </select>
+                            <select id="day-select" class="select-field">
+                                <option value="" disabled selected>Day</option>
+                                <!-- Days would be populated here -->
+                            </select>
+                            <select id="year-select" class="select-field">
+                                <option value="" disabled selected>Year</option>
+                                <!-- Years would be populated here -->
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="nextPageOtp" class="next-button">Next</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- otp section -->
+        <div id="otpSection" class="modal-container-otp display-none">
+            <!-- Header with Back Arrow and Logo -->
+            <div class="modal-header-otp">
+                <div id="backArrowOtp" class="back-arrow-otp">&#x2190;</div>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="logo-x">
+                    <g>
+                        <path fill="#e7e9ea"
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                        </path>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="modal-content-otp">
+                <h2>We sent you a code</h2>
+                <p>Enter it below to verify </p>
+
+                <div class="input-group-otp">
+                    <input type="text" id="verificationCode" class="input-field-otp" placeholder=" " required>
+                    <label for="verificationCode" class="input-label-otp">Verification code</label>
+                </div>
+
+                <a href="#" class="forgot-link-otp">Didn't receive email?</a>
+            </div>
+
+            <!-- Footer with Next Button -->
+            <div class="modal-footer-otp">
+                <button class="next-button-otp" id="nextBtn">Next</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

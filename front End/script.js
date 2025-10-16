@@ -1,29 +1,29 @@
 import { SERVER_URL } from "./constants.js";
 
-document.addEventListener('DOMContentLoaded', async function () {
-    try {
-        const response = await fetch(`${SERVER_URL}/user/current-user`, {
-            method: 'GET',
-            credentials: 'include'
-        });
+// document.addEventListener('DOMContentLoaded', async function () {
+//     try {
+//         const response = await fetch(`${SERVER_URL}/user/current-user`, {
+//             method: 'GET',
+//             credentials: 'include'
+//         });
 
-        if (response.ok) {
-            const data = await response.json();
-            console.log('User data retrieved successfully:', data);
-        } else {
-            const errorData = await response.json();
-            console.error('Error retrieving user data:', errorData);
-            if (!window.location.href.includes('login.html')) {
-                window.location.href = "/login/login.html";
-            }
-        }
-    } catch (error) {
-        console.error('Network error:', error);
-        if (!window.location.href.includes('login.html')) {
-            window.location.href = "/login/login.html";
-        }
-    }
-});
+//         if (response.ok) {
+//             const data = await response.json();
+//             console.log('User data retrieved successfully:', data);
+//         } else {
+//             const errorData = await response.json();
+//             console.error('Error retrieving user data:', errorData);
+//             if (!window.location.href.includes('login.html')) {
+//                 window.location.href = "/login/login.html";
+//             }
+//         }
+//     } catch (error) {
+//         console.error('Network error:', error);
+//         if (!window.location.href.includes('login.html')) {
+//             window.location.href = "/login/login.html";
+//         }
+//     }
+// });
 
 const navMenu = document.getElementById('nav-menu');
 const navLinks = navMenu.querySelectorAll('.nav-link');
