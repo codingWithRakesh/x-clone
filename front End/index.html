@@ -256,19 +256,20 @@
                 <div class="feed">
                     <!-- NAVBAR -->
                     <div class="nav-tabs">
-                        <div class="nav-tab active">For you</div>
-                        <div class="nav-tab">Following</div>
+                        <button class="nav-tab active"><a href="" id="foryou">For You</a></button>
+                        <button class="nav-tab"><a href="" id="following">Following</a></button>
+                        <div class="sliding-line"></div>
                     </div>
 
                     <!-- Tweetbox -->
                     <div class="tweetbox">
                         <div class="pfp-cont">
-                        <img src="assets/images/man1.jpg" class="pfp" alt="Profile">
+                            <img src="assets/images/man1.jpg" class="pfp" alt="Profile">
                         </div>
                         <div style="flex: 1;">
                             <!-- <input type="text" placeholder="What is happening?"> -->
-                             <textarea class="txt" placeholder="What Is happening?"></textarea>
-                           <div class="tweetbox-bottom">
+                            <textarea class="txt" placeholder="What Is happening?"></textarea>
+                            <div class="tweetbox-bottom">
                                 <div class="csv">
                                     <div class="v"><i class="fa-regular fa-image"></i></div>
                                     <div class="v"><i class="fa-solid fa-film"></i></div>
@@ -286,7 +287,7 @@
                     <!-- TEXT POST -->
                     <div class="post">
                         <div class="pfp-cont">
-                        <img src="assets/images/man2.jpeg" class="pfp" alt="Profile">
+                            <img src="assets/images/man2.jpeg" class="pfp" alt="Profile">
                         </div>
                         <div class="post-content">
                             <div class="post-header">
@@ -298,10 +299,13 @@
                                     <input type="checkbox" id="menu1">
                                     <label for="menu1"><i class="fa fa-ellipsis-v"></i></label>
                                     <div class="dropdown">
-                                        <a href="#"><i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;Not interested in this post</a>
+                                        <a href="#"><i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;Not interested in
+                                            this post</a>
                                         <a href="#"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Follow @johndoe</a>
-                                        <a href="#"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Add/remove from Lists</a>
-                                        <a href="#"><i class="fa fa-volume-off" aria-hidden="true"></i>&nbsp;&nbsp;Mute</a>
+                                        <a href="#"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Add/remove
+                                            from Lists</a>
+                                        <a href="#"><i class="fa fa-volume-off"
+                                                aria-hidden="true"></i>&nbsp;&nbsp;Mute</a>
                                         <a href="#"><i class="fas fa-ban"></i>&nbsp;&nbsp;Block @johndoe</a>
                                         <a href="#">View post engagements</a>
                                         <a href="#">Embed post</a>
@@ -329,7 +333,7 @@
                     <!-- IMAGE POST -->
                     <div class="post">
                         <div class="pfp-cont">
-                        <img src="assets/images/man3.jpg" class="pfp" alt="Profile">
+                            <img src="assets/images/man3.jpg" class="pfp" alt="Profile">
                         </div>
 
                         <div class="post-content">
@@ -342,10 +346,13 @@
                                     <input type="checkbox" id="menu2">
                                     <label for="menu2"><i class="fa fa-ellipsis-v"></i></label>
                                     <div class="dropdown">
-                                        <a href="#"><i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;Not interested in this post</a>
+                                        <a href="#"><i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;Not interested in
+                                            this post</a>
                                         <a href="#"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Follow @janesmith</a>
-                                        <a href="#"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Add/remove from Lists</a>
-                                        <a href="#"><i class="fa fa-volume-off" aria-hidden="true"></i>&nbsp;&nbsp;Mute</a>
+                                        <a href="#"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Add/remove
+                                            from Lists</a>
+                                        <a href="#"><i class="fa fa-volume-off"
+                                                aria-hidden="true"></i>&nbsp;&nbsp;Mute</a>
                                         <a href="#"><i class="fas fa-ban"></i>&nbsp;&nbsp;Block @janesmith</a>
                                         <a href="#">View post engagements</a>
                                         <a href="#">Embed post</a>
@@ -371,10 +378,125 @@
                         </div>
                     </div>
 
+                    <!-- IMAGE POST -->
+                    <div class="post">
+                        <div class="pfp-cont">
+                            <img src="assets/images/man3.jpg" class="pfp" alt="Profile">
+                        </div>
+
+                        <div class="post-content">
+                            <div class="post-header">
+                                <div class="user-info">
+                                    <strong>Jane Smith</strong>
+                                    <span>@janesmith · 3h</span>
+                                </div>
+                                <div class="menu">
+                                    <input type="checkbox" id="menu2">
+                                    <label for="menu2"><i class="fa fa-ellipsis-v"></i></label>
+                                    <div class="dropdown">
+                                        <a href="#"><i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;Not interested in
+                                            this post</a>
+                                        <a href="#"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Follow @janesmith</a>
+                                        <a href="#"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Add/remove
+                                            from Lists</a>
+                                        <a href="#"><i class="fa fa-volume-off"
+                                                aria-hidden="true"></i>&nbsp;&nbsp;Mute</a>
+                                        <a href="#"><i class="fas fa-ban"></i>&nbsp;&nbsp;Block @janesmith</a>
+                                        <a href="#">View post engagements</a>
+                                        <a href="#">Embed post</a>
+                                        <a href="#"><i class="fas fa-flag"></i>&nbsp;&nbsp;Report post</a>
+                                        <a href="#">Request Community Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-text">Spider Man!</div>
+                            <div class="imgagess">
+                                <div class="image-grid">
+                                    <img src="Images/abc.png" alt="Image 1">
+                                    <img src="Images/istockphoto-814423752-612x612.jpg" alt="Image 2">
+                                    <img src="Images/photo-1710609942195-b9dab8f48fc6.jpeg" alt="Image 3">
+                                    <img src="Images/abc.png" alt="Image 4">
+                                    <img src="Images/abc.png" alt="Image 5">
+                                    <img src="Images/abc.png" alt="Image 6">
+                                </div>
+                            </div>
+
+                            <div class="post-actions">
+                                <div class="action-btn comment"><i class="fa-regular fa-comment"></i></div>
+                                <div class="action-btn retweet"><i class="fa-solid fa-retweet"></i></div>
+                                <input type="checkbox" id="like2" class="like-checkbox">
+                                <label for="like2" class="action-btn like"><i class="fa-regular fa-heart"></i></label>
+                                <div class="action-btn view"><i class="fa-solid fa-chart-simple"></i></div>
+                                <div class="bookmark-container">
+                                    <div class="action-btn save"><i class="fa-regular fa-bookmark"></i></div>
+                                    <div class="action-btn share"><i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Monisha -->
+                    <div class="post">
+                        <div class="pfp-cont">
+                            <img src="assets/images/man3.jpg" class="pfp" alt="Profile">
+                        </div>
+
+                        <div class="post-content">
+                            <div class="post-header">
+                                <div class="user-info">
+                                    <strong>Jane Smith</strong>
+                                    <span>@janesmith · 3h</span>
+                                </div>
+                                <div class="menu">
+                                    <input type="checkbox" id="menu2">
+                                    <label for="menu2"><i class="fa fa-ellipsis-v"></i></label>
+                                    <div class="dropdown">
+                                        <a href="#"><i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;Not interested in
+                                            this post</a>
+                                        <a href="#"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Follow @janesmith</a>
+                                        <a href="#"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Add/remove
+                                            from Lists</a>
+                                        <a href="#"><i class="fa fa-volume-off"
+                                                aria-hidden="true"></i>&nbsp;&nbsp;Mute</a>
+                                        <a href="#"><i class="fas fa-ban"></i>&nbsp;&nbsp;Block @janesmith</a>
+                                        <a href="#">View post engagements</a>
+                                        <a href="#">Embed post</a>
+                                        <a href="#"><i class="fas fa-flag"></i>&nbsp;&nbsp;Report post</a>
+                                        <a href="#">Request Community Note</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-text">Spider Man!</div>
+                            <div class="imgagess">
+                                <div class="image-grid">
+                                    <img src="Images/abc.png" alt="Image 1">
+                                    <img src="Images/abc.png" alt="Image 2">
+                                    <img src="Images/abc.png" alt="Image 3">
+                                    <img src="Images/abc.png" alt="Image 4">
+                                    <!-- add more images if needed -->
+                                    <!-- <img src="img5.jpg" alt="Image 5"> -->
+                                </div>
+                            </div>
+                            <div class="post-actions">
+                                <div class="action-btn comment"><i class="fa-regular fa-comment"></i></div>
+                                <div class="action-btn retweet"><i class="fa-solid fa-retweet"></i></div>
+                                <input type="checkbox" id="like2" class="like-checkbox">
+                                <label for="like2" class="action-btn like"><i class="fa-regular fa-heart"></i></label>
+                                <div class="action-btn view"><i class="fa-solid fa-chart-simple"></i></div>
+                                <div class="bookmark-container">
+                                    <div class="action-btn save"><i class="fa-regular fa-bookmark"></i></div>
+                                    <div class="action-btn share"><i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- VIDEO POST -->
                     <div class="post">
                         <div class="pfp-cont">
-                        <img src="assets/images/man1.jpg" class="pfp" alt="Profile">
+                            <img src="assets/images/man1.jpg" class="pfp" alt="Profile">
                         </div>
                         <div class="post-content">
                             <div class="post-header">
@@ -386,10 +508,13 @@
                                     <input type="checkbox" id="menu3">
                                     <label for="menu3"><i class="fa fa-ellipsis-v"></i></label>
                                     <div class="dropdown">
-                                        <a href="#"><i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;Not interested in this post</a>
+                                        <a href="#"><i class="fa-solid fa-face-frown"></i>&nbsp;&nbsp;Not interested in
+                                            this post</a>
                                         <a href="#"><i class="fa-solid fa-user"></i>&nbsp;&nbsp;Follow @marklee</a>
-                                        <a href="#"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Add/remove from Lists</a>
-                                        <a href="#"><i class="fa fa-volume-off" aria-hidden="true"></i>&nbsp;&nbsp;Mute</a>
+                                        <a href="#"><i class="fa fa-list" aria-hidden="true"></i>&nbsp;&nbsp;Add/remove
+                                            from Lists</a>
+                                        <a href="#"><i class="fa fa-volume-off"
+                                                aria-hidden="true"></i>&nbsp;&nbsp;Mute</a>
                                         <a href="#"><i class="fas fa-ban"></i>&nbsp;&nbsp;Block @marklee</a>
                                         <a href="#">View post engagements</a>
                                         <a href="#">Embed post</a>
@@ -402,7 +527,7 @@
                             <!-- Monisha -->
 
                             <div class="post-text">Check out my latest travel vlog 🎥</div>
-                            <video src="assets/videos/a.mp4" class="post-video" muted autoplay controls></video>
+                            <video src="assets/videos/a.mp4" class="post-video" controls></video>
                             <div class="post-actions">
                                 <div class="action-btn comment"><i class="fa-regular fa-comment"></i></div>
                                 <div class="action-btn retweet"><i class="fa-solid fa-retweet"></i></div>
@@ -420,7 +545,8 @@
 
                 </div>
 
-                <!-- Monisha -->
+
+
 
             </div>
             <div class="rightCol">
@@ -481,9 +607,6 @@
             </div>
         </div>
     </div>
-
-
-
 
     <!-- Take post container -->
     <div id="postModal" class="modal-overlay-post display-none">
@@ -580,8 +703,16 @@
             </div>
         </div>
     </div>
-
-
+    <script>
+        $(document).ready(function () {
+            $("#following").click(function () {
+                $(".sliding-line").animate({ left: "173px", width: "140px" }, 10);
+            });
+            $("#foryou").click(function () {
+                $(".sliding-line").animate({ left: "44px", width: "60px" }, 10);
+            });
+        });
+    </script>
 </body>
 
 </html>

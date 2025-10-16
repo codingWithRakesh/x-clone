@@ -1,29 +1,29 @@
 import { SERVER_URL } from "./constants.js";
 
-// document.addEventListener('DOMContentLoaded', async function () {
-//     try {
-//         const response = await fetch(`${SERVER_URL}/user/current-user`, {
-//             method: 'GET',
-//             credentials: 'include'
-//         });
+document.addEventListener('DOMContentLoaded', async function () {
+    try {
+        const response = await fetch(`${SERVER_URL}/user/current-user`, {
+            method: 'GET',
+            credentials: 'include'
+        });
 
-//         if (response.ok) {
-//             const data = await response.json();
-//             console.log('User data retrieved successfully:', data);
-//         } else {
-//             const errorData = await response.json();
-//             console.error('Error retrieving user data:', errorData);
-//             if (!window.location.href.includes('login.html')) {
-//                 window.location.href = "/login/login.html";
-//             }
-//         }
-//     } catch (error) {
-//         console.error('Network error:', error);
-//         if (!window.location.href.includes('login.html')) {
-//             window.location.href = "/login/login.html";
-//         }
-//     }
-// });
+        if (response.ok) {
+            const data = await response.json();
+            console.log('User data retrieved successfully:', data);
+        } else {
+            const errorData = await response.json();
+            console.error('Error retrieving user data:', errorData);
+            if (!window.location.href.includes('login.html')) {
+                window.location.href = "/login/login.html";
+            }
+        }
+    } catch (error) {
+        console.error('Network error:', error);
+        if (!window.location.href.includes('login.html')) {
+            window.location.href = "/login/login.html";
+        }
+    }
+});
 
 const navMenu = document.getElementById('nav-menu');
 const navLinks = navMenu.querySelectorAll('.nav-link');
@@ -92,4 +92,37 @@ window.addEventListener('click', function (event) {
         postModal.classList.add('display-none');
         document.body.style.overflow = ''; // Restore scrolling
     }
+});
+
+
+
+
+// --- Image Grid Handler ---
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".image-grid").forEach(grid => {
+    const imgs = grid.querySelectorAll("img");
+
+    if (imgs.length > 4) {
+      const extra = imgs.length - 4;
+
+      // Hide all images after the 4th
+      for (let i = 4; i < imgs.length; i++) {
+        imgs[i].style.display = "none";
+      }
+
+      // Create overlay div
+      const overlay = document.createElement("div");
+      overlay.className = "image-overlay";
+      overlay.textContent = `+${extra}`;
+
+      // Wrap 4th image
+      const fourth = imgs[3];
+      const wrapper = document.createElement("div");
+      wrapper.className = "overlay-wrapper";
+
+      fourth.parentNode.insertBefore(wrapper, fourth);
+      wrapper.appendChild(fourth);
+      wrapper.appendChild(overlay);
+    }
+  });
 });
