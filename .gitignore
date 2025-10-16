@@ -1,6 +1,5 @@
 .vscode/
-mywork
-
+# mywork
 backEnd/.env
 backEnd/node_modules
 
